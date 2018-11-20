@@ -1,6 +1,6 @@
 # Flutter App
 
-Im Rahmen des Bachelorprojektes "Entwicklung einer mobile Anwendung" wird eine App im Rahmen des Neuaufbaubau der SAP-Weiterbildung an der Universität Duisburg-Essen entwickelt.
+Im Rahmen des Bachelorprojektes "Entwicklung einer mobile Anwendung" wird eine App für den Neuaufbaubau der SAP-Weiterbildung an der Universität Duisburg-Essen entwickelt.
 
 ## Getting Started
 

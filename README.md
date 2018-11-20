@@ -8,7 +8,7 @@ For help getting started with Flutter, view their online
 [documentation](https://flutter.io/).
 
 ### Built with
-with Flutter, :sweat: and :heart: :smile:
+with <img src="https://flutter.io/images/flutter-mark-square-100.png" alt="Flutter" width="32" height="32" />, :sweat: and :heart: :smile:
 
 ### Versioning
 Wir benutzen semantische Versionierung (siehe https://semver.org/)

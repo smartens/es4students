@@ -5,7 +5,7 @@ stages:
   - deploy
 
 unit_test:
-  image: brianegan/flutter_lcov:v0.5.1
+  image: smartens/flutter_lcov_docker
   stage: test
   script:
     - flutter test --coverage

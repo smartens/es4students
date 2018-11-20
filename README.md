@@ -4,11 +4,11 @@ Im Rahmen des Bachelorprojektes "Entwicklung einer mobile Anwendung" wird eine A
 
 ## Getting Started
 
-For help getting started with Flutter, view our online
+For help getting started with Flutter, view their online
 [documentation](https://flutter.io/).
 
 ### Built with
-with Flutter and Sweat :sweat:
+with Flutter, :sweat: and :heart: :smile:
 
 ### Versioning
 Wir benutzen semantische Versionierung (siehe https://semver.org/)

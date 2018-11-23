@@ -1,5 +1,4 @@
 # https://raw.githubusercontent.com/brianegan/flutter_redux/master/.gitlab-ci.yml
-
 stages:
   - test
   - deploy

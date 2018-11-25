@@ -4,9 +4,10 @@ stages:
   - deploy
 
 unit_test:
-  image: alpine/git
+  image: jangrewe/gitlab-ci-android
   stage: test
   script:
+    - pwd
     - git clone --branch beta --depth 1 https://github.com/flutter/flutter.git
     - export PATH=$PATH:`pwd`/flutter/bin
     - flutter doctor -v

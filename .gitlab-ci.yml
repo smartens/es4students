@@ -7,7 +7,7 @@ unit_test:
   image: jangrewe/gitlab-ci-android
   stage: test
   script:
-    - pwd
+    - apt-get -y install lcov
     - git clone --branch beta --depth 1 https://github.com/flutter/flutter.git
     - export PATH=$PATH:`pwd`/flutter/bin
     - flutter doctor -v

@@ -4,11 +4,12 @@ stages:
   - deploy
 
 unit_test:
-  image: nathansamson/flutter-builder-docker:v0.10.2
+  image: alpine
   stage: test
   script:
-#    - apt-get install -y curl
-#    - flutter upgrade
+    - git clone --branch beta --depth 1 https://github.com/flutter/flutter.git
+    - export PATH=$PATH:`pwd`/flutter/bin
+    - flutter doctor -v
     - flutter test --coverage
     - genhtml coverage/lcov.info --output=coverage
     - dartdoc

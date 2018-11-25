@@ -4,7 +4,7 @@ stages:
   - deploy
 
 unit_test:
-  image: smartens/flutter_lcov_docker
+  image: gcr.io/flutter-cirrus/build-flutter-image:latest
   stage: test
   script:
     - apt-get install -y curl

@@ -12,7 +12,7 @@ unit_test:
     - export PATH=$PATH:`pwd`/flutter/bin
     - flutter doctor -v
     - flutter test --coverage
-    - genhtml coverage/lcov.info --output=coverage
+    #- genhtml coverage/lcov.info --output=coverage
     - dartdoc
   artifacts:
     paths:

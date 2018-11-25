@@ -4,11 +4,11 @@ stages:
   - deploy
 
 unit_test:
-  image: gcr.io/flutter-cirrus/build-flutter-image:latest
+  image: nathansamson/flutter-builder-docker:v0.10.2
   stage: test
   script:
-    - apt-get install -y curl
-    - flutter upgrade
+#    - apt-get install -y curl
+#    - flutter upgrade
     - flutter test --coverage
     - genhtml coverage/lcov.info --output=coverage
     - dartdoc

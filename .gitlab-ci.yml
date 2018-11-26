@@ -1,18 +1,22 @@
 # https://raw.githubusercontent.com/brianegan/flutter_redux/master/.gitlab-ci.yml
 stages:
+  - documentation
   - test
   - deploy
 
 unit_test:
-  image: archlinux/base
+  image: ubuntu
   stage: test
   script:
     - git clone --branch beta --depth 1 https://github.com/flutter/flutter.git
     - export PATH=$PATH:`pwd`/flutter/bin
+    #- git clone --branch 2.1.0 --depth 1 https://github.com/dart-lang/sdk.git
+    #- wget https://github.com/dart-lang/sdk/archive/2.1.0.zip
+    #- wget https://github.com/flutter/flutter/archive/v0.11.9.zip
     - flutter doctor -v
     - flutter test --coverage
     #- genhtml coverage/lcov.info --output=coverage
-    - dartdoc
+    #- dartdoc
   artifacts:
     paths:
       - coverage/

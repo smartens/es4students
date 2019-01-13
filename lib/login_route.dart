@@ -3,11 +3,15 @@ import 'home_route.dart';
 
 class LoginRoute extends StatefulWidget {
   static String tag = "login-route";
+
   @override
   _LoginRouteState createState() => new _LoginRouteState();
 }
 
 class _LoginRouteState extends State<LoginRoute> {
+  /// Bei falscher Benutzerkennung oder Passwort auf 'true' setzen
+  bool _showValidationError = false;
+
   @override
   Widget build(BuildContext context) {
     final loginName = TextFormField(
@@ -24,6 +28,8 @@ class _LoginRouteState extends State<LoginRoute> {
       obscureText: true,
       decoration: InputDecoration(
         hintText: "Passwort",
+        errorText:
+            _showValidationError ? "Benutzername oder Passwort falsch" : null,
         //contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: UnderlineInputBorder(),
       ),
@@ -35,7 +41,10 @@ class _LoginRouteState extends State<LoginRoute> {
       onPressed: () {
         Navigator.of(context).pushNamed(HomeRoute.tag);
       },
-      child: Text("Anmelden", style: TextStyle(color: Colors.white),),
+      child: Text(
+        "Anmelden",
+        style: TextStyle(color: Colors.white),
+      ),
     );
 
     return Scaffold(
@@ -54,11 +63,17 @@ class _LoginRouteState extends State<LoginRoute> {
               style: TextStyle(fontSize: 16.0),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 24.0,),
+            SizedBox(
+              height: 24.0,
+            ),
             loginName,
-            SizedBox(height: 8.0,),
+            SizedBox(
+              height: 8.0,
+            ),
             password,
-            SizedBox(height: 24.0,),
+            SizedBox(
+              height: 24.0,
+            ),
             loginButton,
           ],
         ),

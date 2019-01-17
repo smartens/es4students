@@ -2,7 +2,11 @@
 
 <img src="https://git.uni-due.de/project-flutter/app/raw/c175997f712c5abfdfccc0aac969472ac135171d/images/erp4students_logo.PNG" align="right">
 
-Im Rahmen es Bachelorprojektes "Entwicklung einer mobile Anwendung" wird eine Appfür den Neuaufbaubau der SAP-Weiterbildung an der Universität Duisburg-Essen entwickelt.
+Im Rahmen es Bachelorprojektes "Entwicklung einer obile Anwendung" wird eine Appfür den Neuaufbaubau der SAP-Weiterbildung an der Universität Duisburg-Essen entwickelt.
+
+**Forschungsfrage:**
+
+_Wie kann man auf die zunehmend steigende Nutzung von mobilen Endgeräten im Rahmen der Aus- und Weiterbildung reagieren? Und damit gleichzeitig welche Anforderung eine solche Applikation erfüllen muss (reine Anzeige von PDFs? Videos? Interaktion? Gameifikation?)._
 
 
 

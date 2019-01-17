@@ -18,17 +18,8 @@ For help getting started with Flutter, view their online
 ### Built with
 with <img src="https://flutter.io/images/flutter-mark-square-100.png" alt="Flutter" width="32" height="32" />, :sweat: and :heart: :smile:
 
-### Versioning
-Wir benutzen semantische Versionierung:
+### Entwickler
 
-> Given a version number MAJOR.MINOR.PATCH, increment the:
-> * MAJOR version when you make incompatible API changes,
-> * MINOR version when you add functionality in a backwards-compatible manner, and
-> * PATCH version when you make backwards-compatible bug fixes.
->
-> Source: https://semver.org/
-
-### Authoren
 * Steffen Martens
 * Sascha Brockel
 * Bhupinder Pal Singh

@@ -1,4 +1,4 @@
-![](https://git.uni-due.de/project-flutter/app/raw/c175997f712c5abfdfccc0aac969472ac135171d/images/erp4students_logo.PNG)
+<img src="https://git.uni-due.de/project-flutter/app/raw/c175997f712c5abfdfccc0aac969472ac135171d/images/erp4students_logo.PNG" align="right">
 
 # Flutter App
 

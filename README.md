@@ -1,3 +1,5 @@
+![](https://git.uni-due.de/project-flutter/app/raw/c175997f712c5abfdfccc0aac969472ac135171d/images/erp4students_logo.PNG)
+
 # Flutter App
 
 Im Rahmen des Bachelorprojektes "Entwicklung einer mobile Anwendung" wird eine App für den Neuaufbaubau der SAP-Weiterbildung an der Universität Duisburg-Essen entwickelt.

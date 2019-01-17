@@ -29,7 +29,7 @@ class _LoginRouteState extends State<LoginRoute> {
       decoration: InputDecoration(
         hintText: "Passwort",
         errorText:
-            _showValidationError ? "Benutzername oder Passwort falsch" : null,
+        _showValidationError ? "Benutzername oder Passwort falsch" : null,
         //contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: UnderlineInputBorder(),
       ),
@@ -37,7 +37,7 @@ class _LoginRouteState extends State<LoginRoute> {
 
     final loginButton = RaisedButton(
       shape: StadiumBorder(),
-      color: Colors.lightBlueAccent,
+      color: Color.fromRGBO(67, 84, 161, 1.0),
       onPressed: () {
         Navigator.of(context).pushNamed(HomeRoute.tag);
       },
@@ -51,20 +51,28 @@ class _LoginRouteState extends State<LoginRoute> {
       appBar: AppBar(
         title: Text("ERP4Students"),
         centerTitle: true,
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Color.fromRGBO(67, 84, 161, 1.0),
       ),
       body: Center(
         child: ListView(
-          shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 24.0),
+          physics: BouncingScrollPhysics(),
+          //shrinkWrap: true,
+          padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 48.0),
           children: <Widget>[
+            Image.asset(
+              'images/erp4students_logo.png',
+              fit: BoxFit.cover,
+            ),
+            SizedBox(
+              height: 12.0,
+            ),
             Text(
               "Melden Sie sich mit\nIhrer Benutzerkennung an",
               style: TextStyle(fontSize: 16.0),
               textAlign: TextAlign.center,
             ),
             SizedBox(
-              height: 24.0,
+              height: 12.0,
             ),
             loginName,
             SizedBox(
@@ -72,7 +80,7 @@ class _LoginRouteState extends State<LoginRoute> {
             ),
             password,
             SizedBox(
-              height: 24.0,
+              height: 12.0,
             ),
             loginButton,
           ],

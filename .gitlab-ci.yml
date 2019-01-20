@@ -19,5 +19,5 @@ pages:
   artifacts:
     paths:
       - public
-  only:
-    - docs # this job will affect only the 'docs' branch
+  # only:
+    # - docs # this job will affect only the 'docs' branch

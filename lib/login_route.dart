@@ -49,7 +49,9 @@ class _LoginRouteState extends State<LoginRoute> {
 
     final loginButton = RaisedButton(
       shape: StadiumBorder(),
-      color: Color.fromRGBO(67, 84, 161, 1.0),
+      color: Theme
+          .of(context)
+          .primaryColor,
       onPressed: () {
         Navigator.of(context).pushNamedAndRemoveUntil(
             HomeRoute.tag, (_) => false);
@@ -64,7 +66,6 @@ class _LoginRouteState extends State<LoginRoute> {
       appBar: AppBar(
         title: Text("ERP4Students"),
         centerTitle: true,
-        backgroundColor: Color.fromRGBO(67, 84, 161, 1.0),
       ),
       body: Center(
         child: ListView(

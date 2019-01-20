@@ -22,7 +22,6 @@ class HomeRoute extends StatelessWidget {
         actions: <Widget>[
           logoutButton,
         ],
-        backgroundColor: Colors.lightBlueAccent,
       ),
     );
   }

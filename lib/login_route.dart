@@ -11,27 +11,39 @@ class LoginRoute extends StatefulWidget {
 class _LoginRouteState extends State<LoginRoute> {
   /// Bei falscher Benutzerkennung oder Passwort auf 'true' setzen
   bool _showValidationError = false;
+  bool _obscureText = true;
+
+
 
   @override
   Widget build(BuildContext context) {
-    final loginName = TextFormField(
+    final loginNameField = TextFormField(
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
         hintText: "Benutzername",
-        //contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: UnderlineInputBorder(),
       ),
     );
 
-    final password = TextFormField(
+    final passwordField = TextFormField(
       keyboardType: TextInputType.text,
-      obscureText: true,
+      obscureText: _obscureText,
       decoration: InputDecoration(
         hintText: "Passwort",
         errorText:
         _showValidationError ? "Benutzername oder Passwort falsch" : null,
-        //contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: UnderlineInputBorder(),
+        suffixIcon: GestureDetector(
+          onTap: () {
+            setState(() {
+              _obscureText = !_obscureText;
+            });
+          },
+          child: Icon(
+            _obscureText ? Icons.visibility : Icons.visibility_off,
+            semanticLabel: _obscureText ? 'show password' : 'hide password',
+          ),
+        ),
       ),
     );
 
@@ -39,7 +51,8 @@ class _LoginRouteState extends State<LoginRoute> {
       shape: StadiumBorder(),
       color: Color.fromRGBO(67, 84, 161, 1.0),
       onPressed: () {
-        Navigator.of(context).pushNamed(HomeRoute.tag);
+        Navigator.of(context).pushNamedAndRemoveUntil(
+            HomeRoute.tag, (_) => false);
       },
       child: Text(
         "Anmelden",
@@ -57,7 +70,7 @@ class _LoginRouteState extends State<LoginRoute> {
         child: ListView(
           physics: BouncingScrollPhysics(),
           //shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 48.0),
+          padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 24.0),
           children: <Widget>[
             Image.asset(
               'images/erp4students_logo.png',
@@ -74,11 +87,11 @@ class _LoginRouteState extends State<LoginRoute> {
             SizedBox(
               height: 12.0,
             ),
-            loginName,
+            loginNameField,
             SizedBox(
               height: 8.0,
             ),
-            password,
+            passwordField,
             SizedBox(
               height: 12.0,
             ),

@@ -2,7 +2,7 @@
 ![](https://www.erp4students.de/App_Themes/erp4students-de_1801/images/header.jpg)
 # Beschreibung
 
-<img src="https://git.uni-due.de/project-flutter/app/raw/c175997f712c5abfdfccc0aac969472ac135171d/images/erp4students_logo.PNG" align="right">
+<img src="https://static.wiwi.uni-due.de/user-upload/iis-logo.png" align="right">
 
 Im Rahmen es Bachelorprojektes "Entwicklung einer obile Anwendung" wird eine Appfür den Neuaufbaubau der SAP-Weiterbildung an der Universität Duisburg-Essen entwickelt.
 

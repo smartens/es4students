@@ -15,6 +15,7 @@ before_script:
 pages:
   stage: deploy
   script:
+    - cp README.md docs/ # Gitbook needs the README.md in docs
     - gitbook build . public # build to public path
   artifacts:
     paths:

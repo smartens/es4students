@@ -2,7 +2,13 @@
     "root": "./docs",
     "plugins": [
         "summary",
+        "gitlab",
         "-sharing",
         "-fontsettings"
-      ]
+    ],
+    "pluginsConfig": {
+        "gitlab": {
+            "url": "https://git.uni-due.de/erp4students/erp4students-mobile-app"
+        }
+    }
 }

@@ -1,20 +1,23 @@
 @startuml
-left to right direction
+
 skinparam componentStyle uml2
 
-[Login] -- LoginState
-[Login] --( LoginBloc
+[Login] --( UserRepository
+[Login] --( AuthenticationEvent
+[Login] --( AuthenticationBloc
 
-[Login BLoC] -- LoginBloc
-[Login BLoC] --( LoginState
-[Login BLoC] --( UserRepository
-
-[Authentication BLoC] -- Authentication
-[Authentication BLoC] --( LoginState
+[Authentication] -- AuthenticationEvent
+[Authentication] -- AuthenticationBloc
+[Authentication] --( UserRepository
 
 [Repository] -- UserRepository
-[Repository] --( MoodleClient
+[Repository] --( MoodleAPI
+[Repository] --( WordPressAPI
 
-[Moodle] -- MoodleClient
+[Network] -- MoodleAPI
+[Network] -- WordPressAPI
+
+[Home] --( AuthenticationEvent
+[Home] --( AuthenticationBloc
 
 @enduml

@@ -1,23 +1,40 @@
 @startuml
-
+left to right direction
 skinparam componentStyle uml2
+skinparam component {
+  FontSize 18
+}
+skinparam interface {
+    FontSize 18
+}
 
-[Login] --( UserRepository
+[View] -d- LoginPage
+[View] -d- CourseListPage
+
+[Main] -u-( LoginPage
+[Main] -u-( CourseListPage
+[Main] -d-( UserRepository
+[Main] -d-( AuthenticationBloc
+[Main] -d-( AuthenticationEvent
+
+[Login] -d-( UserRepository
 [Login] --( AuthenticationEvent
 [Login] --( AuthenticationBloc
 
-[Authentication] -- AuthenticationEvent
-[Authentication] -- AuthenticationBloc
-[Authentication] --( UserRepository
+[Authentication] -u- AuthenticationEvent
+[Authentication] -u- AuthenticationBloc
+[Authentication] -d-( UserRepository
 
-[Repository] -- UserRepository
-[Repository] --( MoodleAPI
-[Repository] --( WordPressAPI
+[Repository] -u- UserRepository
+[Repository] -u- CourseListRepository
+[Repository] -d-( MoodleAPI
+[Repository] -d-( WordPressAPI
 
-[Network] -- MoodleAPI
-[Network] -- WordPressAPI
+[Network] -u- MoodleAPI
+[Network] -u- WordPressAPI
 
-[Home] --( AuthenticationEvent
-[Home] --( AuthenticationBloc
+[CoursesList] --( AuthenticationEvent
+[CoursesList] --( AuthenticationBloc
+[CoursesList] -d-( CourseListRepository
 
 @enduml

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'login_route.dart';
-import 'home_route.dart';
+
+import 'package:app/view/home_route.dart';
+import 'package:app/view/login_route.dart';
 
 void main() => runApp(MyApp());
 

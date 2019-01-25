@@ -1,6 +1,7 @@
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 
+/// Repräsentiert den Zustand der Login Komponente
 abstract class LoginState extends Equatable {
   LoginState([List props = const []]) : super(props);
 }
@@ -11,11 +12,13 @@ class LoginInitial extends LoginState {
   String toString() => 'LoginInitial';
 }
 
+/// Zustand der Login Komponente während der Authentifizierung
 class LoginLoading extends LoginState {
   @override
   String toString() => 'LoginLoading';
 }
 
+/// Zustand der Login Komponente beim Fehlschlagen der Authentifizierung
 class LoginFailure extends LoginState {
   final String error;
 

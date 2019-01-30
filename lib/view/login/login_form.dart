@@ -2,6 +2,7 @@
 import 'package:app/login/login_bloc.dart';
 import 'package:app/login/login_event.dart';
 import 'package:app/login/login_state.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -79,6 +80,11 @@ class _LoginFormState extends State<LoginForm> {
           BuildContext context,
           LoginState state,
         ) {
+          if (state is LoginFailure)
+            setState(() {
+              _showValidationError = true;
+            });
+
           return Form(
             child: Center(
               child: ListView(

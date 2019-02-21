@@ -11,35 +11,40 @@ class CourseTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: Card(
-        clipBehavior: Clip.antiAlias,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.book),
-              title: Text(name),
-              subtitle: Text(description),
-            ),
-            ButtonTheme.bar(
-              child: ButtonBar(
-                children: <Widget>[
-                  FlatButton(
-                    child: const Text('ABMELDEN'),
-                    onPressed: () {
-                      /* ... */
-                    },
-                  ),
-                  FlatButton(
-                    child: const Text('ZUM KURS'),
-                    onPressed: () {
-                      /* ... */
-                    },
-                  ),
-                ],
+      child: GestureDetector(
+        onTap: () {
+          /* ... */
+        },
+        child: Card(
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              ListTile(
+                leading: Icon(Icons.book),
+                title: Text(name),
+                subtitle: Text(description),
               ),
-            ),
-          ],
+              ButtonTheme.bar(
+                child: ButtonBar(
+                  children: <Widget>[
+                    FlatButton(
+                      child: const Text('ABMELDEN'),
+                      onPressed: () {
+                        /* ... */
+                      },
+                    ),
+                    FlatButton(
+                      child: const Text('ZUM KURS'),
+                      onPressed: () {
+                        /* ... */
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

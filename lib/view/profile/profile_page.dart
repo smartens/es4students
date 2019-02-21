@@ -13,7 +13,7 @@ class _ProfilePageState extends State<ProfilePage> {
     ///Methode um Kurse mit DummyData zu generieren
     List<CourseTile> generateDummyData() {
       List<CourseTile> dummyData = new List<CourseTile>();
-      for (int i = 0; i < 10; i++) {
+      for (int i = 1; i < 10; i++) {
         dummyData.add(
           CourseTile(
             name: ('Kurs ' + i.toString()),
@@ -25,12 +25,22 @@ class _ProfilePageState extends State<ProfilePage> {
       return dummyData;
     }
 
+    Widget logoutButton = IconButton(
+      icon: Icon(Icons.exit_to_app),
+      onPressed: () {
+        /* ... */
+      },
+    );
+
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
             title: const Text('Übersicht'),
             centerTitle: true,
+            actions: <Widget>[
+              logoutButton
+            ],
             expandedHeight: 256.0,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(

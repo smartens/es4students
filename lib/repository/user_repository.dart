@@ -1,4 +1,5 @@
 import 'package:meta/meta.dart';
+import 'dart:async';
 
 class UserRepository {
   Future<String> authenticate({

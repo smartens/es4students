@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-//import 'package:app/authentication/authentication_bloc.dart';
+import 'package:app/authentication/authentication_bloc.dart';
 import 'package:app/login/login_bloc.dart';
-//import 'package:app/repository/user_repository.dart';
+import 'package:app/repository/user_repository.dart';
 
 import 'login_form.dart';
 
 class LoginPage extends StatefulWidget {
-  //final UserRepository userRepository;
+  final UserRepository userRepository;
 
   LoginPage({
     Key key,
-    //@required this.userRepository,
-  }) : //assert(userRepository != null),
+    @required this.userRepository,
+  }) : assert(userRepository != null),
         super(key: key);
 
   @override
@@ -22,16 +22,16 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   LoginBloc _loginBloc;
 
-  //AuthenticationBloc authenticationBloc;
+  AuthenticationBloc _authenticationBloc;
 
-  //UserRepository get _userRepository => widget.userRepository;
+  UserRepository get _userRepository => widget.userRepository;
 
   @override
   void initState() {
-    //_authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
+    _authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
     _loginBloc = LoginBloc(
-        //userRepository: _userRepository,
-        //authenticationBloc: _authenticationBloc,
+        userRepository: _userRepository,
+        authenticationBloc: _authenticationBloc,
         );
     super.initState();
   }
@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
         centerTitle: true,
       ),
       body: LoginForm(
-        //authenticationBloc: _authenticationBloc,
+        authenticationBloc: _authenticationBloc,
         loginBloc: _loginBloc,
       ),
     );

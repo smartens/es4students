@@ -1,7 +1,10 @@
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 
-/// Repräsentiert den Zustand der Login Komponente
+/// Dient als Schnittstelle zwischen der Login Bloc Komponente und dem Login UI.
+/// Es repräsentiert den Zustand des Login UI.
+/// Es wird von den Klassen [LoginInitial], [LoginLoading], [LoginFailure] 
+/// implementiert.
 abstract class LoginState extends Equatable {
   LoginState([List props = const []]) : super(props);
 }
@@ -12,13 +15,13 @@ class LoginInitial extends LoginState {
   String toString() => 'LoginInitial';
 }
 
-/// Zustand der Login Komponente während der Authentifizierung
+/// Zustand des Login UI während der Authentifizierung
 class LoginLoading extends LoginState {
   @override
   String toString() => 'LoginLoading';
 }
 
-/// Zustand der Login Komponente beim Fehlschlagen der Authentifizierung
+/// Zustand des Login UI beim Fehlschlagen der Authentifizierung
 class LoginFailure extends LoginState {
   final String error;
 

@@ -1,13 +1,14 @@
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 
-/// Basisklasse für Events der Loginoberfläche
+/// Dient als Schnittstelle zwischen der Login Bloc Komponente und dem Login UI.
+/// Sie repäsentiert die möglichen Events des Login UI.
+/// Es wird von [LoginButtonPressed] implementiert.
 abstract class LoginEvent extends Equatable {
   LoginEvent([List props = const []]) : super(props);
 }
 
-/// Eventklasse, welche an den Login Bloc weitergeleitet wird, 
-/// wenn der Login Button gedrückt wird.
+/// Eventklasse, welche ausgelöst wird beim drücken des Login Button.
 class LoginButtonPressed extends LoginEvent {
   final String username;
   final String password;

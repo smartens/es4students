@@ -11,8 +11,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   get initialState => null;
 
   @override
-  Stream<ProfileState> mapEventToState(
-      ProfileState currentState, ProfileEvent event) async* {
+  Stream<ProfileState> mapEventToState(ProfileEvent event) async* {
     // TODO: implement mapEventToState
     return;
   }

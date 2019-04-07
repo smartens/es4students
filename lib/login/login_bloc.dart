@@ -11,7 +11,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   get initialState => null;
 
   @override
-  Stream<LoginState> mapEventToState(LoginState currentState, LoginEvent event) async* {
+  Stream<LoginState> mapEventToState(LoginEvent event) async* {
     // TODO: implement mapEventToState
     return;
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app/view/onboarding_page.dart';
 
 import 'view/login/login_page.dart';
 
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: OnBoardingPage(),
       theme: ThemeData(
         primaryColor: Color.fromRGBO(67, 84, 161, 1.0),
       ),

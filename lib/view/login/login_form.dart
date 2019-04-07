@@ -1,4 +1,4 @@
-//import 'package:app/authentication/authentication_bloc.dart';
+import 'package:app/authentication/authentication_bloc.dart';
 import 'package:app/login/login_bloc.dart';
 import 'package:app/login/login_event.dart';
 import 'package:app/login/login_state.dart';
@@ -9,12 +9,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class LoginForm extends StatefulWidget {
   final LoginBloc loginBloc;
 
-  //final AuthenticationBloc authenticationBloc;
+  final AuthenticationBloc authenticationBloc;
 
   LoginForm({
     Key key,
     @required this.loginBloc,
-    //@required this.authenticationBloc,
+    @required this.authenticationBloc,
   }) : super(key: key);
 
   @override

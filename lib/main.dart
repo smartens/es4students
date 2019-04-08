@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
               return SplashPage();
             } */
             if (state is FirstStart) {
-              return OnBoardingPage();
+              return OnBoardingPage(userRepository: _userRepository,);
             }
             if (state is AuthenticationAuthenticated) {
               return ProfilePage();

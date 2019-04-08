@@ -7,6 +7,10 @@ import 'package:app/repository/user_repository.dart';
 import 'package:app/authentication/authentication_event.dart';
 import 'package:app/authentication/authentication_state.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
+
+
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   final UserRepository userRepository;
@@ -24,10 +28,18 @@ class AuthenticationBloc
     if (event is AppStarted) {
       final bool hasToken = await userRepository.hasToken();
 
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      
+
       if (hasToken) {
         yield AuthenticationAuthenticated();
       } else {
-        yield AuthenticationUnauthenticated();
+        if (prefs.getBool('firstStart') ?? true) {
+          await prefs.setBool('firstStart', false);
+          yield FirstStart();
+        } else {
+          yield AuthenticationUnauthenticated();
+        }
       }
     }
 

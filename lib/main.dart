@@ -47,7 +47,10 @@ class _MyAppState extends State<MyApp> {
         home: BlocBuilder<AuthenticationEvent, AuthenticationState>(
           bloc: _authenticationBloc,
           builder: (BuildContext context, AuthenticationState state) {
-            if (state is AuthenticationUninitialized) {
+            /* if (state is AuthenticationUninitialized) {
+              return SplashPage();
+            } */
+            if (state is FirstStart) {
               return OnBoardingPage();
             }
             if (state is AuthenticationAuthenticated) {

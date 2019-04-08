@@ -10,6 +10,7 @@ import 'package:app/authentication/authentication_state.dart';
 import 'package:app/repository/user_repository.dart';
 import 'package:app/view/profile/profile_page.dart';
 import 'package:app/view/login/login_page.dart';
+import 'package:app/view/splash_page.dart';
 
 class MyApp extends StatefulWidget {
   final UserRepository userRepository;
@@ -47,9 +48,9 @@ class _MyAppState extends State<MyApp> {
         home: BlocBuilder<AuthenticationEvent, AuthenticationState>(
           bloc: _authenticationBloc,
           builder: (BuildContext context, AuthenticationState state) {
-            /* if (state is AuthenticationUninitialized) {
+            if (state is AuthenticationUninitialized) {
               return SplashPage();
-            } */
+            }
             if (state is FirstStart) {
               return OnBoardingPage();
             }

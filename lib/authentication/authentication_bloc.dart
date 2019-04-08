@@ -35,7 +35,6 @@ class AuthenticationBloc
         yield AuthenticationAuthenticated();
       } else {
         if (prefs.getBool('firstStart') ?? true) {
-          await prefs.setBool('firstStart', false);
           yield FirstStart();
         } else {
           yield AuthenticationUnauthenticated();
@@ -44,13 +43,13 @@ class AuthenticationBloc
     }
 
     if (event is LoggedIn) {
-      yield AuthenticationLoading();
+      //yield AuthenticationLoading();
       await userRepository.persistToken(event.token);
       yield AuthenticationAuthenticated();
     }
 
     if (event is LoggedOut) {
-      yield AuthenticationLoading();
+      //yield AuthenticationLoading();
       await userRepository.deleteToken();
       yield AuthenticationUnauthenticated();
     }

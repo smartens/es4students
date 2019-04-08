@@ -9,6 +9,8 @@ import 'package:app/authentication/authentication_event.dart';
 import 'login_event.dart';
 import 'login_state.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final UserRepository userRepository;
   final AuthenticationBloc authenticationBloc;
@@ -24,6 +26,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
     if (event is LoginButtonPressed) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      if (prefs.getBool('firstStart' ?? true)) {
+        await prefs.setBool('firstStart', false);
+      } else {
+        await prefs.setBool('firstStart', true);
+      }
+
       yield LoginLoading();
 
       try {
@@ -33,7 +43,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
         authenticationBloc.dispatch(LoggedIn(token: token));
         yield LoginInitial();
-
       } catch (error) {
         yield LoginFailure(error: error.toString());
       }

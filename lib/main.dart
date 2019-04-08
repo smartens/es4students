@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
               return SplashPage();
             }
             if (state is FirstStart) {
-              return OnBoardingPage();
+              return OnBoardingPage(userRepository: _userRepository,);
             }
             if (state is AuthenticationAuthenticated) {
               return ProfilePage();
@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
           },
         ),
         theme: ThemeData(
-          primaryColor: Color.fromRGBO(67, 84, 161, 1.0),
+          primaryColor: Color.fromRGBO(236, 114, 8, 1.0),
         ),
       ),
     );

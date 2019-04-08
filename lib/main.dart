@@ -4,24 +4,12 @@ import 'package:app/view/onboarding_page.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'authentication/authentication_bloc.dart';
-import 'authentication/authentication_event.dart';
-import 'authentication/authentication_state.dart';
-import 'repository/user_repository.dart';
-import 'view/profile/profile_page.dart';
-import 'view/login/login_page.dart';
-
-class SimpleBlocDelegate extends BlocDelegate {
-  @override
-  void onTransition(Transition transition) {
-    print(transition.toString());
-  }
-}
-
-void main() {
-  BlocSupervisor().delegate = SimpleBlocDelegate();
-  runApp(MyApp(userRepository: UserRepository()));
-}
+import 'package:app/authentication/authentication_bloc.dart';
+import 'package:app/authentication/authentication_event.dart';
+import 'package:app/authentication/authentication_state.dart';
+import 'package:app/repository/user_repository.dart';
+import 'package:app/view/profile/profile_page.dart';
+import 'package:app/view/login/login_page.dart';
 
 class MyApp extends StatefulWidget {
   final UserRepository userRepository;
@@ -76,4 +64,17 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
+}
+
+class SimpleBlocDelegate extends BlocDelegate {
+  @override
+  void onTransition(Transition transition) {
+    super.onTransition(transition);
+    print(transition.toString());
+  }
+}
+
+void main() {
+  BlocSupervisor().delegate = SimpleBlocDelegate();
+  runApp(MyApp(userRepository: UserRepository()));
 }

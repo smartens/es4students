@@ -62,7 +62,7 @@ class _MyAppState extends State<MyApp> {
           },
         ),
         theme: ThemeData(
-          primaryColor: Color.fromRGBO(67, 84, 161, 1.0),
+          primaryColor: Color.fromRGBO(236, 114, 8, 1.0),
         ),
       ),
     );

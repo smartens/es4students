@@ -26,14 +26,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
     if (event is LoginButtonPressed) {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-
-      if (prefs.getBool('firstStart' ?? true)) {
-        await prefs.setBool('firstStart', false);
-      } else {
-        await prefs.setBool('firstStart', true);
-      }
-
       yield LoginLoading();
 
       try {

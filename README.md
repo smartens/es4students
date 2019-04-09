@@ -1,4 +1,4 @@
-![](https://es4students.de/wp-content/uploads/2019/03/ES4Students_Logo_white.png)
+<img src="https://static.wiwi.uni-due.de/user-upload/iis-logo.png" width="200px">
 # Beschreibung
 
 <img src="https://static.wiwi.uni-due.de/user-upload/iis-logo.png" align="right">

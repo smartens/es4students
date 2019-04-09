@@ -1,8 +1,7 @@
+<img src="https://static.wiwi.uni-due.de/user-upload/iis-logo.png" align="right">
 <img src="https://es4students.de/wp-content/uploads/2019/03/ES4Students_Logo_white.png" width="200">
 
 # Beschreibung
-
-<img src="https://static.wiwi.uni-due.de/user-upload/iis-logo.png" align="right">
 
 Im Rahmen es Bachelorprojektes "Entwicklung einer obile Anwendung" wird eine Appfür den Neuaufbaubau der SAP-Weiterbildung an der Universität Duisburg-Essen entwickelt.
 

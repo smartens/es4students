@@ -1,5 +1,5 @@
-<img src="https://static.wiwi.uni-due.de/user-upload/iis-logo.png" height="100">
 <img src="https://es4students.de/wp-content/uploads/2019/03/ES4Students_Logo_white.png" width="200">
+<img src="https://static.wiwi.uni-due.de/user-upload/iis-logo.png" height="100">
 
 # Beschreibung
 

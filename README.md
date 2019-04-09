@@ -1,5 +1,4 @@
-
-![](https://www.erp4students.de/App_Themes/erp4students-de_1801/images/header.jpg)
+![](https://es4students.de/wp-content/uploads/2019/03/ES4Students_Logo_white.png)
 # Beschreibung
 
 <img src="https://static.wiwi.uni-due.de/user-upload/iis-logo.png" align="right">

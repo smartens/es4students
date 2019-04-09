@@ -5,7 +5,10 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Image.asset('images/erp4students_logo.png')
+        child: Image.asset(
+          'images/erp4students_logo.png',
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

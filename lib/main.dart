@@ -12,7 +12,6 @@ import 'package:ES4students/view/login/login_page.dart';
 import 'package:ES4students/view/splash_page.dart';
 import 'package:ES4students/view/onboarding_page.dart';
 
-
 class ES4studentsApp extends StatefulWidget {
   final UserRepository userRepository;
 

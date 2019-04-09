@@ -21,6 +21,8 @@ dependencies:
   introduction_screen: ^1.0.0
   shared_preferences: ^0.5.1+2
   material_design_icons_flutter: 3.2.3595
+  flutter_full_pdf_viewer: ^1.0.4
+  path_provider: ^0.5.0+1
 
 
   # The following adds the Cupertino Icons font to your application.

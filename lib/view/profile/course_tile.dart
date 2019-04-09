@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:ES4students/pdf_viewer.dart';
+
 class CourseTile extends StatelessWidget {
   CourseTile({Key key, @required this.name, @required this.description})
       : super(key: key);
@@ -14,6 +16,12 @@ class CourseTile extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           /* ... */
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => PDFViewer()
+            ),
+          );
         },
         child: Card(
           clipBehavior: Clip.antiAlias,

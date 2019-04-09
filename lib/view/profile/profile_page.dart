@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:ES4students/repository/user_repository.dart';
+
+import 'package:ES4students/authentication/authentication_event.dart';
+import 'package:ES4students/authentication/authentication_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+
 
 import 'course_tile.dart';
 
 class ProfilePage extends StatefulWidget {
+  final UserRepository userRepository;
+
+  ProfilePage({
+    Key key,
+    @required this.userRepository,
+  })  : assert(userRepository != null),
+        super(key: key);
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -10,6 +25,9 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
+    final AuthenticationBloc authenticationBloc =
+     BlocProvider.of<AuthenticationBloc>(context);
+
     ///Methode um Kurse mit DummyData zu generieren
     List<CourseTile> generateDummyData() {
       List<CourseTile> dummyData = new List<CourseTile>();
@@ -28,7 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
     Widget logoutButton = IconButton(
       icon: Icon(Icons.exit_to_app),
       onPressed: () {
-        /* ... */
+        authenticationBloc.dispatch(LoggedOut());
       },
     );
 
@@ -38,9 +56,7 @@ class _ProfilePageState extends State<ProfilePage> {
           SliverAppBar(
             title: const Text('Übersicht'),
             centerTitle: true,
-            actions: <Widget>[
-              logoutButton
-            ],
+            actions: <Widget>[logoutButton],
             expandedHeight: 256.0,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(

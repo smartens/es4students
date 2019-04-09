@@ -10,6 +10,11 @@ class AppStarted extends AuthenticationEvent {
   String toString() => 'AppStarted';
 }
 
+class OnboardingFinished extends AuthenticationEvent {
+  @override
+  String toString() => 'OnboardingFinished';
+}
+
 class LoggedIn extends AuthenticationEvent {
   final String token;
 

@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 
-import 'package:app/view/onboarding_page.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:app/authentication/authentication_bloc.dart';
-import 'package:app/authentication/authentication_event.dart';
-import 'package:app/authentication/authentication_state.dart';
-import 'package:app/repository/user_repository.dart';
-import 'package:app/view/profile/profile_page.dart';
-import 'package:app/view/login/login_page.dart';
-import 'package:app/view/splash_page.dart';
+import 'package:ES4students/authentication/authentication_bloc.dart';
+import 'package:ES4students/authentication/authentication_event.dart';
+import 'package:ES4students/authentication/authentication_state.dart';
+import 'package:ES4students/repository/user_repository.dart';
+import 'package:ES4students/view/profile/profile_page.dart';
+import 'package:ES4students/view/login/login_page.dart';
+import 'package:ES4students/view/splash_page.dart';
+import 'package:ES4students/view/onboarding_page.dart';
 
-class es4studentsApp extends StatefulWidget {
+
+class ES4studentsApp extends StatefulWidget {
   final UserRepository userRepository;
 
-  es4studentsApp({Key key, @required this.userRepository}) : super(key: key);
+  ES4studentsApp({Key key, @required this.userRepository}) : super(key: key);
 
   @override
-  _es4studentsAppState createState() => _es4studentsAppState();
+  ES4studentsAppState createState() => ES4studentsAppState();
 }
 
-class _es4studentsAppState extends State<es4studentsApp> {
+class ES4studentsAppState extends State<ES4studentsApp> {
   AuthenticationBloc _authenticationBloc;
 
   UserRepository get _userRepository => widget.userRepository;
@@ -52,13 +53,13 @@ class _es4studentsAppState extends State<es4studentsApp> {
               return SplashPage();
             }
             if (state is FirstStart) {
-              return OnBoardingPage(userRepository: _userRepository,);
-            }
-            if (state is AuthenticationAuthenticated) {
-              return ProfilePage();
+              return OnBoardingPage();
             }
             if (state is AuthenticationUnauthenticated) {
-              return LoginPage(userRepository: _userRepository,);
+              return LoginPage(userRepository: _userRepository);
+            }
+            if (state is AuthenticationAuthenticated) {
+              return ProfilePage(userRepository: _userRepository);
             }
           },
         ),
@@ -80,5 +81,5 @@ class SimpleBlocDelegate extends BlocDelegate {
 
 void main() {
   BlocSupervisor().delegate = SimpleBlocDelegate();
-  runApp(es4studentsApp(userRepository: UserRepository()));
+  runApp(ES4studentsApp(userRepository: UserRepository()));
 }

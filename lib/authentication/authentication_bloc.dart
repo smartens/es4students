@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
-import 'package:app/repository/user_repository.dart';
+import 'package:ES4students/repository/user_repository.dart';
 
-import 'package:app/authentication/authentication_event.dart';
-import 'package:app/authentication/authentication_state.dart';
+import 'package:ES4students/authentication/authentication_event.dart';
+import 'package:ES4students/authentication/authentication_state.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,6 +40,10 @@ class AuthenticationBloc
           yield AuthenticationUnauthenticated();
         }
       }
+    }
+
+    if (event is OnboardingFinished) {
+      yield AuthenticationUnauthenticated();
     }
 
     if (event is LoggedIn) {

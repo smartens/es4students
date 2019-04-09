@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:app/authentication/authentication_bloc.dart';
-import 'package:app/login/login_bloc.dart';
-import 'package:app/repository/user_repository.dart';
+import 'package:ES4students/authentication/authentication_bloc.dart';
+import 'package:ES4students/login/login_bloc.dart';
+import 'package:ES4students/repository/user_repository.dart';
 
 import 'login_form.dart';
 
@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ERP4Students'),
+        title: Text('es4students'),
         centerTitle: true,
       ),
       body: LoginForm(

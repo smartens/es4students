@@ -1,4 +1,4 @@
-<img src="https://static.wiwi.uni-due.de/user-upload/iis-logo.png" width="200px">
+<img src="https://static.wiwi.uni-due.de/user-upload/iis-logo.png" width="200" height="100">
 # Beschreibung
 
 <img src="https://static.wiwi.uni-due.de/user-upload/iis-logo.png" align="right">

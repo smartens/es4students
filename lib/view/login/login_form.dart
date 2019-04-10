@@ -24,6 +24,9 @@ class _LoginFormState extends State<LoginForm> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  bool _obscureText = true;
+  bool _showValidationError = false;
+
   LoginBloc get _loginBloc => widget.loginBloc;
 
   @override
@@ -45,28 +48,88 @@ class _LoginFormState extends State<LoginForm> {
           });
         }
 
+        final usernameField = TextFormField(
+          keyboardType: TextInputType.text,
+          controller: _usernameController,
+          decoration: InputDecoration(
+            hintText: "Benutzername",
+            border: UnderlineInputBorder(),
+          ),
+        );
+
+        final passwordField = TextFormField(
+          keyboardType: TextInputType.text,
+          controller: _passwordController,
+          obscureText: _obscureText,
+          decoration: InputDecoration(
+            hintText: "Passwort",
+            errorText:
+            _showValidationError ? "Benutzername oder Passwort falsch" : null,
+            border: UnderlineInputBorder(),
+            suffixIcon: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _obscureText = !_obscureText;
+                });
+              },
+              child: Icon(
+                _obscureText ? Icons.visibility : Icons.visibility_off,
+                semanticLabel: _obscureText ? 'show password' : 'hide password',
+              ),
+            ),
+          ),
+        );
+
+        final loginButton = RaisedButton(
+          shape: StadiumBorder(),
+          color: Theme
+              .of(context)
+              .primaryColor,
+          onPressed:
+          state is! LoginLoading ? _onLoginButtonPressed : null,
+          child: Text(
+            "Anmelden",
+            style: TextStyle(color: Colors.white),
+          ),
+        );
+
         return Form(
-          child: Column(
-            children: [
-              TextFormField(
-                decoration: InputDecoration(labelText: 'username'),
-                controller: _usernameController,
-              ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'password'),
-                controller: _passwordController,
-                obscureText: true,
-              ),
-              RaisedButton(
-                onPressed:
-                    state is! LoginLoading ? _onLoginButtonPressed : null,
-                child: Text('Login'),
-              ),
-              Container(
-                child:
-                    state is LoginLoading ? CircularProgressIndicator() : null,
-              ),
-            ],
+          child: Center(
+            child: ListView(
+              physics: BouncingScrollPhysics(),
+              padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 24.0),
+              children: [
+                Image.asset(
+                  'images/erp4students_logo.png',
+                  fit: BoxFit.cover,
+                ),
+                SizedBox(
+                  height: 12.0,
+                ),
+                Text(
+                  "Melden Sie sich mit\nIhrer Benutzerkennung an",
+                  style: TextStyle(fontSize: 16.0),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 12.0,
+                ),
+                usernameField,
+                SizedBox(
+                  height: 8.0,
+                ),
+                passwordField,
+                SizedBox(
+                  height: 12.0,
+                ),
+                loginButton,
+                Center(
+                  child: state is LoginLoading
+                      ? CircularProgressIndicator()
+                      : null,
+                ),
+              ],
+            ),
           ),
         );
       },

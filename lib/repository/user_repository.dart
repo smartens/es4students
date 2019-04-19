@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 class UserRepository {
    String serviceName = "moodle_mobile_app";
    
@@ -26,6 +27,7 @@ class UserRepository {
        throw new Exception('Benutzername oder Passwort ist falsch!');
       }
     }
+    return "";
   }
 
   Future<void> deleteToken() async {
@@ -52,5 +54,23 @@ class UserRepository {
     /// read from keystore/keychain
     //await Future.delayed(Duration(seconds: 1));
     //return false;
+  }
+
+  Future<Map> getUserData() async { //liefert ein Map zurück. jsonModel['fullname'] ergibt die Name des Benutzers.
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String token = prefs.get('token');
+
+    Map jsonModel;
+    final String url = "https://moodle.uni-due.de/webservice/rest/server.php?wstoken=$token.get&wsfunction=core_webservice_get_site_info&moodlewsrestformat=json";
+
+    var res = await http.get(Uri.encodeFull(url), headers: {"Accept": "application/json"});
+
+    if(res != null)
+    {
+      jsonModel = jsonDecode(res.body);
+    } else{
+      throw new Exception('DashboardData Error!');
+    }
+    return jsonModel;
   }
 }

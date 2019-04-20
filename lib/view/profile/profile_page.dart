@@ -31,7 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
     ///Methode um Kurse mit DummyData zu generieren
     List<CourseTile> generateDummyData() {
       List<CourseTile> dummyData = new List<CourseTile>();
-      for (int i = 1; i < 10; i++) {
+      for (int i = 1; i < 3; i++) {
         dummyData.add(
           CourseTile(
             name: ('Kurs ' + i.toString()),
@@ -41,6 +41,29 @@ class _ProfilePageState extends State<ProfilePage> {
         );
       }
       return dummyData;
+    }
+
+    List<Widget> generateList() {
+      List<Widget> moduleList = new List<Widget>();
+      moduleList.addAll(generateDummyData());
+      moduleList.addAll([
+        Divider(height: 30,),
+        Center(
+            child: Text(
+              'Weitere Kursangebote',
+              style: TextStyle(color: Theme
+                  .of(context)
+                  .primaryColor, fontWeight: FontWeight.bold),
+            )
+        ),
+        CourseTile(
+          name: 'Superduperextrakurs',
+          description: 'Toller Kurs, den man kaufen soll',
+          courseIcon: Icon(Icons.android),
+          extraCourse: true,
+        ),
+      ]);
+      return moduleList;
     }
 
     Widget logoutButton = IconButton(
@@ -72,12 +95,6 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         child: Column(
                           children: <Widget>[
-                            /*Text(
-                              'Profil',
-                              style: Theme.of(context).textTheme.headline.apply(
-                                fontWeightDelta: 2,
-                              ),
-                            ),*/
                             Padding(
                               padding: const EdgeInsets.only(bottom: 8.0),
                               child: CircleAvatar(
@@ -111,7 +128,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             SliverList(
-              delegate: SliverChildListDelegate(generateDummyData()),
+              delegate: SliverChildListDelegate(generateList()),
             )
           ],
         ),

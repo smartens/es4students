@@ -12,7 +12,7 @@ class UserRepository {
     @required String password,
   }) async {
     final String url =
-        "https://moodle.uni-due.de/login/token.php?username=$username&password=$password&service=$serviceName";
+        "https://es4students.de/elearning/login/token.php?username=$username&password=$password&service=$serviceName";
 
     var res = await http
         .get(Uri.encodeFull(url), headers: {"Accept": "application/json"});

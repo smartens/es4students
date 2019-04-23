@@ -64,7 +64,7 @@ class UserRepository {
 
     Map jsonModel;
     final String url =
-        "https://moodle.uni-due.de/webservice/rest/server.php?wstoken=$token&wsfunction=core_webservice_get_site_info&moodlewsrestformat=json";
+        "https://es4students.de/elearning/webservice/rest/server.php?wstoken=$token&wsfunction=core_webservice_get_site_info&moodlewsrestformat=json";
 
     var res = await http
         .get(Uri.encodeFull(url), headers: {"Accept": "application/json"});

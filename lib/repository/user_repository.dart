@@ -75,22 +75,21 @@ class UserRepository {
   }
 
   Future<Map> getDashboardCourseData() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
+   SharedPreferences prefs = await SharedPreferences.getInstance();
     final String token = prefs.get('token');
 
     Map jsonModel;
 
-    final String url = "https://es4students.de/elearning/webservice/rest/server.php?wstoken=124da2c217605ccb2fe6d69782828cad&wsfunction=core_enrol_get_users_courses&moodlewsrestformat=json&userid=10";
+    final String url = "https://es4students.de/elearning/webservice/rest/server.php?wstoken=$token&wsfunction=core_enrol_get_users_courses&moodlewsrestformat=json&userid=10";
     var res = await http.get(Uri.encodeFull(url), headers: {"Accept": "application/json"});
 
     if(res != null)
     
     {
-      print("API RESPONSE" + res.body);
       jsonModel = jsonDecode(res.body);
       
     } else{
-      throw new Exception('DashboardData Error!');
+      throw new Exception('Dashboard CourseData Error!');
     }
     return jsonModel;
   }

@@ -23,10 +23,24 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  String _fullName = '';
+
+  void initState() {
+    super.initState();
+    if (_fullName.isEmpty) {
+      widget.userRepository.getUserData('fullname').then(
+              (String s) =>
+              setState(() {
+                _fullName = s;
+              })
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final AuthenticationBloc authenticationBloc =
-     BlocProvider.of<AuthenticationBloc>(context);
+    BlocProvider.of<AuthenticationBloc>(context);
 
     ///Methode um Kurse mit DummyData zu generieren
     List<CourseTile> generateDummyData() {
@@ -108,7 +122,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             ),
                             Text(
-                              'Vorname Nachname', //TODO: Verweis für Name
+                              _fullName,
                               style:
                               TextStyle(fontSize: 24.0, color: Colors.white),
                             ),

@@ -9,8 +9,6 @@ import 'package:ES4students/authentication/authentication_event.dart';
 import 'login_event.dart';
 import 'login_state.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final UserRepository userRepository;
   final AuthenticationBloc authenticationBloc;

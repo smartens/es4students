@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class UserRepository {
   String serviceName = "moodle_mobile_app";
+  String userId;
 
   Future<String> authenticate({
     @required String username,
@@ -46,7 +47,7 @@ class UserRepository {
 
   Future<bool> hasToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (prefs.getString('token') ?? false) {
+    if (prefs.getString('token') != null) {
       return true;
     } else {
       return false;
@@ -70,11 +71,12 @@ class UserRepository {
         .get(Uri.encodeFull(url), headers: {"Accept": "application/json"});
 
     if (res != null) {
-      print("RES --> " + res.body);
       jsonModel = jsonDecode(res.body);
     } else {
       throw new Exception('DashboardData Error!');
     }
+    userId =jsonModel['userid'].toString();
+    
     return jsonModel[key];
   }
 
@@ -85,7 +87,7 @@ class UserRepository {
     Map jsonModel;
 
     final String url =
-        "https://es4students.de/elearning/webservice/rest/server.php?wstoken=$token&wsfunction=core_enrol_get_users_courses&moodlewsrestformat=json&userid=10";
+        "https://es4students.de/elearning/webservice/rest/server.php?wstoken=$token&wsfunction=core_enrol_get_users_courses&moodlewsrestformat=json&userid=$userId";
     var res = await http
         .get(Uri.encodeFull(url), headers: {"Accept": "application/json"});
 

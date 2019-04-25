@@ -127,7 +127,10 @@ class _DashboardPageState extends State<DashboardPage> {
                             Padding(
                               padding: const EdgeInsets.only(bottom: 8.0),
                               child: CircleAvatar(
-                                backgroundImage: NetworkImage(_userPictureURL),
+                                backgroundImage: _userPictureURL.isNotEmpty ?
+                                NetworkImage(_userPictureURL)
+                                    : AssetImage(
+                                    "images/erp4students_logo.png"),
                                 backgroundColor: Colors.white,
                                 maxRadius: 56.0,
                               ),

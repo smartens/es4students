@@ -9,6 +9,15 @@ import 'package:path_provider/path_provider.dart';
 import 'package:ES4students/view/pdf_viewer_page.dart';
 
 class PDFViewer extends StatefulWidget {
+  final String url;
+
+  PDFViewer({
+    Key key,
+    @required this.url,
+  })
+      : assert(url != null),
+        super(key: key);
+
   @override
   _PDFViewerState createState() => _PDFViewerState();
 }
@@ -19,7 +28,7 @@ class _PDFViewerState extends State<PDFViewer> {
   @override
   void initState() {
     super.initState();
-    createFileOfPdfUrl().then((f) {
+    createFileOfPdfUrl(widget.url).then((f) {
       setState(() {
         pathPDF = f.path;
         print("Pfad: " + pathPDF);
@@ -27,8 +36,7 @@ class _PDFViewerState extends State<PDFViewer> {
     });
   }
 
-  Future<File> createFileOfPdfUrl() async {
-    final url = "http://www.pdf995.com/samples/pdf.pdf";
+  Future<File> createFileOfPdfUrl(String url) async {
     final filename = url.substring(url.lastIndexOf("/") + 1);
     var request = await HttpClient().getUrl(Uri.parse(url));
     var response = await request.close();
@@ -41,17 +49,13 @@ class _PDFViewerState extends State<PDFViewer> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Plugin example app')),
-      body: Center(
-        child: RaisedButton(
-          child: Text("Open PDF"),
-          onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => PDFViewerPage(pathPDF: pathPDF)),
-              ),
-        ),
+    return RaisedButton(
+      child: Text("Open PDF"),
+      onPressed: () =>
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => PDFViewerPage(pathPDF: pathPDF)),
       ),
     );
   }

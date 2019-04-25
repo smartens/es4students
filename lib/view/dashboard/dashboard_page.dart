@@ -97,6 +97,12 @@ class _DashboardPageState extends State<DashboardPage> {
     );
 
     return Scaffold(
+      appBar: PreferredSize(child: AppBar(
+        backgroundColor: Color.fromRGBO(236, 114, 8, 1.0),
+        elevation: 0.0,
+      ),
+          preferredSize: Size.fromHeight(0.0)
+      ),
       body: SafeArea(
         top: true,
         child: CustomScrollView(

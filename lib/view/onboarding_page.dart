@@ -12,19 +12,19 @@ class OnBoardingPage extends StatelessWidget {
 
   final pages = [
     PageViewModel(
-        "Deine Lernmaterialen überall mit dabei", //Titel
-        "auch offline", //Beschreibung
-      image: Image.asset('images/mobility_icon.png'),
+        "Deine Lernmaterialen überall dabei", //Titel
+        "", //Beschreibung
+      image: Image.asset('images/mobility_icon.png', width: 250),
     ),
     PageViewModel(
-        "Mache Quizzes überall und fordere dich heraus", //Titel
+        "Fordere dich in einem Quiz heraus", //Titel
         "", //Beschreibung leer
-      image: Image.asset('images/test_icon.png'),
+      image: Image.asset('images/test_icon.png', width: 250),
     ),
     PageViewModel(
         "Checke deine Fortschritte", //Titel
-        "Bleibe dran", //Beschreibung
-      image: Image.asset('images/process_icon.png'),
+        "", //Beschreibung
+      image: Image.asset('images/process_icon.png', width: 250),
     ),
   ];
 

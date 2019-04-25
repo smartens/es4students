@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'package:ES4students/view/course/course_section_tile.dart';
 import 'package:ES4students/view/pdf/pdf_viewer.dart';
 
 class CoursePage extends StatelessWidget {
   final String name;
   final List<String> pdfURLs;
+  final List<CourseSectionTile> courseSections;
 
   CoursePage({
     Key key,
     @required this.name,
+    this.courseSections,
     this.pdfURLs,
   }) : super(key: key);
 
@@ -24,7 +27,7 @@ class CoursePage extends StatelessWidget {
           centerTitle: true,
         ),
         body: ListView(
-          children: pdfs ?? null,
+          children: courseSections ?? null,
         )
     );
   }

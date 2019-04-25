@@ -14,24 +14,17 @@ class OnBoardingPage extends StatelessWidget {
     PageViewModel(
         "Deine Lernmaterialen überall mit dabei", //Titel
         "auch offline", //Beschreibung
-        image: new LayoutBuilder(builder: (context, constraint) {
-        return new Icon(Icons.mobile_screen_share, size: constraint.biggest.height);
-      }),
-
+      image: Image.asset('images/mobility_icon.png'),
     ),
     PageViewModel(
         "Mache Quizzes überall und fordere dich heraus", //Titel
         "", //Beschreibung leer
-        image: new LayoutBuilder(builder: (context, constraint) {
-        return new Icon(Icons.school, size: constraint.biggest.height);
-        }),
+      image: Image.asset('images/test_icon.png'),
     ),
     PageViewModel(
         "Checke deine Fortschritte", //Titel
         "Bleibe dran", //Beschreibung
-        image: new LayoutBuilder(builder: (context, constraint) {
-        return new Icon(Icons.multiline_chart, size: constraint.biggest.height);
-        }),
+      image: Image.asset('images/process_icon.png'),
     ),
   ];
 

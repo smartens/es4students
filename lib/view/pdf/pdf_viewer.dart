@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:path_provider/path_provider.dart';
 
-import 'package:ES4students/view/pdf_viewer_page.dart';
+import 'package:ES4students/view/pdf/pdf_viewer_page.dart';
 
 class PDFViewer extends StatefulWidget {
   final String url;

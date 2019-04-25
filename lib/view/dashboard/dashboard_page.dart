@@ -9,20 +9,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'course_tile.dart';
 
-class ProfilePage extends StatefulWidget {
+class DashboardPage extends StatefulWidget {
   final UserRepository userRepository;
 
-  ProfilePage({
+  DashboardPage({
     Key key,
     @required this.userRepository,
   })  : assert(userRepository != null),
         super(key: key);
 
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  _DashboardPageState createState() => _DashboardPageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _DashboardPageState extends State<DashboardPage> {
   String _fullName = '';
 
   void initState() {

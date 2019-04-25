@@ -8,7 +8,7 @@ import 'package:ES4students/authentication/authentication_bloc.dart';
 import 'package:ES4students/authentication/authentication_event.dart';
 import 'package:ES4students/authentication/authentication_state.dart';
 import 'package:ES4students/repository/user_repository.dart';
-import 'package:ES4students/view/profile/profile_page.dart';
+import 'package:ES4students/view/dashboard/dashboard_page.dart';
 import 'package:ES4students/view/login/login_page.dart';
 import 'package:ES4students/view/splash_page.dart';
 import 'package:ES4students/view/onboarding_page.dart';
@@ -62,7 +62,7 @@ class ES4studentsAppState extends State<ES4studentsApp> {
               return LoginPage(userRepository: _userRepository);
             }
             if (state is AuthenticationAuthenticated) {
-              return ProfilePage(userRepository: _userRepository);
+              return DashboardPage(userRepository: _userRepository);
             }
           },
         ),

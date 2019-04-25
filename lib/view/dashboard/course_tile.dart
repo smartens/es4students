@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:ES4students/pdf_viewer.dart';
-
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:ES4students/view/course/course_page.dart';
@@ -24,7 +22,7 @@ class CourseTile extends StatelessWidget {
         onTap: () {
           Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => CoursePage(name: name))
+              MaterialPageRoute(builder: (context) => CoursePage(name: name,))
           );
         },
         child: Card(

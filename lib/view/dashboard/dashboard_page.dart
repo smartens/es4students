@@ -24,6 +24,7 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   String _fullName = '';
+  String _userPictureURL = '';
 
   void initState() {
     super.initState();
@@ -32,6 +33,14 @@ class _DashboardPageState extends State<DashboardPage> {
               (String s) =>
               setState(() {
                 _fullName = s;
+              })
+      );
+    }
+    if (_userPictureURL.isEmpty) {
+      widget.userRepository.getUserData('userpictureurl').then(
+              (String s) =>
+              setState(() {
+                _userPictureURL = s;
               })
       );
     }
@@ -112,11 +121,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             Padding(
                               padding: const EdgeInsets.only(bottom: 8.0),
                               child: CircleAvatar(
-                                child: Text(
-                                  "VN",
-                                  //TODO: Methode zum Generieren der Initialen
-                                  style: TextStyle(fontSize: 48.0),
-                                ),
+                                backgroundImage: NetworkImage(_userPictureURL),
                                 backgroundColor: Colors.white,
                                 maxRadius: 56.0,
                               ),

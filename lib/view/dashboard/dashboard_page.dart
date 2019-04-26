@@ -130,7 +130,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                 backgroundImage: _userPictureURL.isNotEmpty ?
                                 NetworkImage(_userPictureURL)
                                     : AssetImage(
-                                    "images/erp4students_logo.png"),
+                                    "images/default_profile_pic.jpeg"),
                                 backgroundColor: Colors.white,
                                 maxRadius: 56.0,
                               ),

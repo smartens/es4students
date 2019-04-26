@@ -29,7 +29,7 @@ class _DashboardPageState extends State<DashboardPage> {
   void initState() {
     super.initState();
     if (_fullName.isEmpty) {
-      widget.userRepository.getUserData('fullname').then(
+      widget.userRepository.getFullName().then(
               (String s) =>
               setState(() {
                 _fullName = s;
@@ -37,7 +37,7 @@ class _DashboardPageState extends State<DashboardPage> {
       );
     }
     if (_userPictureURL.isEmpty) {
-      widget.userRepository.getUserData('userpictureurl').then(
+      widget.userRepository.getUserPictureUrl().then(
               (String s) =>
               setState(() {
                 _userPictureURL = s;

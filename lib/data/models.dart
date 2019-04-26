@@ -162,7 +162,8 @@ class Content {
     this.license,
   });
 
-  factory Content.fromJson(Map<String, dynamic> json) => _$ContentFromJson(json);
+  factory Content.fromJson(Map<String, dynamic> json) =>
+      _$ContentFromJson(json);
   Map<String, dynamic> toJson() => _$ContentToJson(this);
 }
 

@@ -9,8 +9,6 @@ import 'package:ES4students/authentication/authentication_state.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   final UserRepository userRepository;
@@ -26,20 +24,7 @@ class AuthenticationBloc
     AuthenticationEvent event,
   ) async* {
     if (event is AppStarted) {
-      final bool hasToken = await userRepository.hasToken();
-
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      
-
-      if (hasToken) {
-        yield AuthenticationAuthenticated();
-      } else {
-        if (prefs.getBool('firstStart') ?? true) {
-          yield FirstStart();
-        } else {
-          yield AuthenticationUnauthenticated();
-        }
-      }
+      yield* mapAppStartedtoState();
     }
 
     if (event is OnboardingFinished) {
@@ -56,6 +41,22 @@ class AuthenticationBloc
       //yield AuthenticationLoading();
       await userRepository.deleteToken();
       yield AuthenticationUnauthenticated();
+    }
+  }
+
+  Stream<AuthenticationState> mapAppStartedtoState() async* {
+    final bool hasToken = await userRepository.hasToken();
+
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
+    if (hasToken) {
+      yield AuthenticationAuthenticated();
+    } else {
+      if (sharedPreferences.getBool('firstStart') ?? true) {
+        yield FirstStart();
+      } else {
+        yield AuthenticationUnauthenticated();
+      }
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:ES4students/login/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,7 +14,7 @@ class LoginPage extends StatefulWidget {
   LoginPage({
     Key key,
     @required this.userRepository,
-  }) : assert(userRepository != null),
+  })  : assert(userRepository != null),
         super(key: key);
 
   @override
@@ -31,24 +32,29 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     _authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
     _loginBloc = LoginBloc(
-        userRepository: _userRepository,
-        authenticationBloc: _authenticationBloc,
-        );
+      userRepository: _userRepository,
+      authenticationBloc: _authenticationBloc,
+    );
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('es4students'),
-        centerTitle: true,
-      ),
-      body: LoginForm(
-        authenticationBloc: _authenticationBloc,
-        loginBloc: _loginBloc,
-      ),
-    );
+        appBar: AppBar(
+          title: Text('es4students'),
+          centerTitle: true,
+        ),
+        body: BlocListener(
+          bloc: BlocProvider.of<LoginBloc>(context),
+          listener: (BuildContext context, LoginState state) {
+            // TODO: implement listener
+          },
+          child: LoginForm(
+            authenticationBloc: _authenticationBloc,
+            loginBloc: _loginBloc,
+          ),
+        ));
   }
 
   @override

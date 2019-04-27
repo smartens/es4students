@@ -1,10 +1,10 @@
-import 'package:ES4students/bloc/authentication/component.dart';
-import 'package:ES4students/bloc/login/login_state.dart';
+import 'package:es4students/bloc/authentication/component.dart';
+import 'package:es4students/bloc/login/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ES4students/bloc/login/login_bloc.dart';
-import 'package:ES4students/repository/user_repository.dart';
+import 'package:es4students/bloc/login/login_bloc.dart';
+import 'package:es4students/data/repository/user_repository.dart';
 
 import 'login_form.dart';
 

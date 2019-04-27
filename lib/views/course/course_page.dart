@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:ES4students/views/course/course_section_tile.dart';
-import 'package:ES4students/views/pdf/pdf_viewer.dart';
+import 'package:es4students/views/course/course_section_tile.dart';
+import 'package:es4students/views/pdf/pdf_viewer.dart';
 
 class CoursePage extends StatelessWidget {
   final String name;

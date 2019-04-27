@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:ES4students/views/course/course_page.dart';
+import 'package:es4students/views/course/course_page.dart';
 
 class CourseTile extends StatelessWidget {
   CourseTile(

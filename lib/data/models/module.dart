@@ -1,4 +1,4 @@
-import 'package:ES4students/data/models/content.dart';
+import 'package:es4students/data/models/content.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'module.g.dart';
 

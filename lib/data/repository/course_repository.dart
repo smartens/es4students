@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:ES4students/data/models/models.dart';
-import 'package:ES4students/data/provider/moodle_client.dart';
+import 'package:es4students/data/models/models.dart';
+import 'package:es4students/data/provider/moodle_client.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

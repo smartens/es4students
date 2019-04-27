@@ -1,12 +1,13 @@
+// Dart imports
 import 'dart:async';
 
+// internal imports
+import 'package:es4students/data/repository/user_repository.dart';
+import 'package:es4students/bloc/authentication/component.dart';
+
+// Third party imports
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
-import 'package:ES4students/repository/user_repository.dart';
-
-import 'package:ES4students/bloc/authentication/authentication_event.dart';
-import 'package:ES4students/bloc/authentication/authentication_state.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthenticationBloc

@@ -15,6 +15,11 @@ class OnboardingFinished extends AuthenticationEvent {
   String toString() => 'OnboardingFinished';
 }
 
+class LogIn extends AuthenticationEvent {
+  @override
+  String toString() => 'OnboardingFinished';
+}
+
 class LoggedIn extends AuthenticationEvent {
   final String token;
 

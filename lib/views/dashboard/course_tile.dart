@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:ES4students/view/course/course_page.dart';
+import 'package:ES4students/views/course/course_page.dart';
 
 class CourseTile extends StatelessWidget {
-  CourseTile({Key key, @required this.name, @required this.description,
-    this.courseIcon, this.extraCourse = false})
+  CourseTile(
+      {Key key,
+      @required this.name,
+      @required this.description,
+      this.courseIcon,
+      this.extraCourse = false})
       : super(key: key);
 
   final String name;
@@ -22,8 +26,10 @@ class CourseTile extends StatelessWidget {
         onTap: () {
           Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => CoursePage(name: name,))
-          );
+              MaterialPageRoute(
+                  builder: (context) => CoursePage(
+                        name: name,
+                      )));
         },
         child: Card(
           clipBehavior: Clip.antiAlias,
@@ -53,11 +59,12 @@ class CourseTile extends StatelessWidget {
                     Container(
                       child: extraCourse
                           ? FlatButton(
-                        child: const Text('MEHR INFOS'),
-                        onPressed: () {
-                          _launchURL();
-                        },
-                      ) : null,
+                              child: const Text('MEHR INFOS'),
+                              onPressed: () {
+                                _launchURL();
+                              },
+                            )
+                          : null,
                     )
                   ],
                 ),

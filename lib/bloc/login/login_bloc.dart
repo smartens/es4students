@@ -3,8 +3,8 @@ import 'package:meta/meta.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:ES4students/repository/user_repository.dart';
-import 'package:ES4students/authentication/authentication_bloc.dart';
-import 'package:ES4students/authentication/authentication_event.dart';
+import 'package:ES4students/bloc/authentication/authentication_bloc.dart';
+import 'package:ES4students/bloc/authentication/authentication_event.dart';
 
 import 'login_event.dart';
 import 'login_state.dart';

@@ -2,28 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:introduction_screen/model/page_view_model.dart';
 
-import 'package:ES4students/authentication/authentication_bloc.dart';
-import 'package:ES4students/authentication/authentication_event.dart';
+import 'package:ES4students/bloc/authentication/authentication_bloc.dart';
+import 'package:ES4students/bloc/authentication/authentication_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 const logo = 'images/erp4students_logo.png';
 
 class OnBoardingPage extends StatelessWidget {
-
   final pages = [
     PageViewModel(
-        "Deine Lernmaterialen überall dabei", //Titel
-        "", //Beschreibung
+      "Deine Lernmaterialen überall dabei", //Titel
+      "", //Beschreibung
       image: Image.asset('images/mobility_icon.png', width: 250),
     ),
     PageViewModel(
-        "Fordere dich in einem Quiz heraus", //Titel
-        "", //Beschreibung leer
+      "Fordere dich in einem Quiz heraus", //Titel
+      "", //Beschreibung leer
       image: Image.asset('images/test_icon.png', width: 250),
     ),
     PageViewModel(
-        "Checke deine Fortschritte", //Titel
-        "", //Beschreibung
+      "Checke deine Fortschritte", //Titel
+      "", //Beschreibung
       image: Image.asset('images/process_icon.png', width: 250),
     ),
   ];
@@ -31,8 +30,8 @@ class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthenticationBloc authenticationBloc =
-     BlocProvider.of<AuthenticationBloc>(context);
-    
+        BlocProvider.of<AuthenticationBloc>(context);
+
     return IntroductionScreen(
       pages: pages,
       onDone: () {

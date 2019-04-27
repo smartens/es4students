@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:path_provider/path_provider.dart';
 
-import 'package:ES4students/view/pdf/pdf_viewer_page.dart';
+import 'package:ES4students/views/pdf/pdf_viewer_page.dart';
 
 class PDFViewer extends StatefulWidget {
   final String url;
@@ -14,8 +14,7 @@ class PDFViewer extends StatefulWidget {
   PDFViewer({
     Key key,
     @required this.url,
-  })
-      : assert(url != null),
+  })  : assert(url != null),
         super(key: key);
 
   @override
@@ -51,12 +50,11 @@ class _PDFViewerState extends State<PDFViewer> {
   Widget build(BuildContext context) {
     return RaisedButton(
       child: Text("Open PDF"),
-      onPressed: () =>
-          Navigator.push(
+      onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => PDFViewerPage(pathPDF: pathPDF)),
-      ),
+          ),
     );
   }
 }

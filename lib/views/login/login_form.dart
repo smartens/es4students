@@ -1,7 +1,7 @@
-import 'package:ES4students/authentication/authentication_bloc.dart';
-import 'package:ES4students/login/login_bloc.dart';
-import 'package:ES4students/login/login_event.dart';
-import 'package:ES4students/login/login_state.dart';
+import 'package:ES4students/bloc/authentication/authentication_bloc.dart';
+import 'package:ES4students/bloc/login/login_bloc.dart';
+import 'package:ES4students/bloc/login/login_event.dart';
+import 'package:ES4students/bloc/login/login_state.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,8 +63,9 @@ class _LoginFormState extends State<LoginForm> {
           obscureText: _obscureText,
           decoration: InputDecoration(
             hintText: "Passwort",
-            errorText:
-            _showValidationError ? "Benutzername oder Passwort falsch" : null,
+            errorText: _showValidationError
+                ? "Benutzername oder Passwort falsch"
+                : null,
             border: UnderlineInputBorder(),
             suffixIcon: GestureDetector(
               onTap: () {
@@ -82,11 +83,8 @@ class _LoginFormState extends State<LoginForm> {
 
         final loginButton = RaisedButton(
           shape: StadiumBorder(),
-          color: Theme
-              .of(context)
-              .primaryColor,
-          onPressed:
-          state is! LoginLoading ? _onLoginButtonPressed : null,
+          color: Theme.of(context).primaryColor,
+          onPressed: state is! LoginLoading ? _onLoginButtonPressed : null,
           child: Text(
             "Anmelden",
             style: TextStyle(color: Colors.white),

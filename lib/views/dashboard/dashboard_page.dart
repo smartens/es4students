@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ES4students/repository/user_repository.dart';
 
-import 'package:ES4students/authentication/authentication_event.dart';
-import 'package:ES4students/authentication/authentication_bloc.dart';
+import 'package:ES4students/bloc/authentication/authentication_event.dart';
+import 'package:ES4students/bloc/authentication/authentication_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-
 
 import 'course_tile.dart';
 
@@ -29,27 +27,21 @@ class _DashboardPageState extends State<DashboardPage> {
   void initState() {
     super.initState();
     if (_fullName.isEmpty) {
-      widget.userRepository.getFullName().then(
-              (String s) =>
-              setState(() {
-                _fullName = s;
-              })
-      );
+      widget.userRepository.getFullName().then((String s) => setState(() {
+            _fullName = s;
+          }));
     }
     if (_userPictureURL.isEmpty) {
-      widget.userRepository.getUserPictureUrl().then(
-              (String s) =>
-              setState(() {
-                _userPictureURL = s;
-              })
-      );
+      widget.userRepository.getUserPictureUrl().then((String s) => setState(() {
+            _userPictureURL = s;
+          }));
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final AuthenticationBloc authenticationBloc =
-    BlocProvider.of<AuthenticationBloc>(context);
+        BlocProvider.of<AuthenticationBloc>(context);
 
     ///Methode um Kurse mit DummyData zu generieren
     List<CourseTile> generateDummyData() {
@@ -70,15 +62,16 @@ class _DashboardPageState extends State<DashboardPage> {
       List<Widget> moduleList = new List<Widget>();
       moduleList.addAll(generateDummyData());
       moduleList.addAll([
-        Divider(height: 30,),
+        Divider(
+          height: 30,
+        ),
         Center(
             child: Text(
-              'Weitere Kursangebote',
-              style: TextStyle(color: Theme
-                  .of(context)
-                  .primaryColor, fontWeight: FontWeight.bold),
-            )
-        ),
+          'Weitere Kursangebote',
+          style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.bold),
+        )),
         CourseTile(
           name: 'Superduperextrakurs',
           description: 'Toller Kurs, den man kaufen soll',
@@ -97,12 +90,12 @@ class _DashboardPageState extends State<DashboardPage> {
     );
 
     return Scaffold(
-      appBar: PreferredSize(child: AppBar(
-        backgroundColor: Color.fromRGBO(236, 114, 8, 1.0),
-        elevation: 0.0,
-      ),
-          preferredSize: Size.fromHeight(0.0)
-      ),
+      appBar: PreferredSize(
+          child: AppBar(
+            backgroundColor: Color.fromRGBO(236, 114, 8, 1.0),
+            elevation: 0.0,
+          ),
+          preferredSize: Size.fromHeight(0.0)),
       body: SafeArea(
         top: true,
         child: CustomScrollView(
@@ -134,8 +127,8 @@ class _DashboardPageState extends State<DashboardPage> {
                             ),
                             Text(
                               _fullName,
-                              style:
-                              TextStyle(fontSize: 24.0, color: Colors.white),
+                              style: TextStyle(
+                                  fontSize: 24.0, color: Colors.white),
                             ),
                             SizedBox(
                               height: 8.0,

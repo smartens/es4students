@@ -1,104 +1,96 @@
-import 'package:ES4students/network/moodle_client.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meta/meta.dart';
 
-import 'package:ES4students/authentication/authentication_bloc.dart';
-import 'package:ES4students/authentication/authentication_event.dart';
-import 'package:ES4students/authentication/authentication_state.dart';
-import 'package:ES4students/repository/user_repository.dart';
-import 'package:ES4students/view/dashboard/dashboard_page.dart';
-import 'package:ES4students/view/login/login_page.dart';
-import 'package:ES4students/view/splash_page.dart';
-import 'package:ES4students/view/onboarding_page.dart';
+void main() => runApp(MyApp());
 
-class ES4studentsApp extends StatefulWidget {
-  final UserRepository userRepository;
-
-  ES4studentsApp({Key key, @required this.userRepository})
-      : assert(userRepository != null),
-        super(key: key);
-
-  @override
-  ES4studentsAppState createState() => ES4studentsAppState();
-}
-
-class ES4studentsAppState extends State<ES4studentsApp> {
-  AuthenticationBloc _authenticationBloc;
-
-  UserRepository get _userRepository => widget.userRepository;
-
-  @override
-  void initState() {
-    _authenticationBloc = AuthenticationBloc(userRepository: _userRepository);
-    _authenticationBloc.dispatch(AppStarted());
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _authenticationBloc.dispose();
-    super.dispose();
-  }
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark
-        .copyWith(statusBarColor: Color.fromRGBO(236, 114, 8, 1.0)));
-    return BlocProvider<AuthenticationBloc>(
-      bloc: _authenticationBloc,
+    return BlocProvider(
+      bloc: DataBloc(),
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: BlocBuilder<AuthenticationEvent, AuthenticationState>(
-          bloc: _authenticationBloc,
-          builder: (BuildContext context, AuthenticationState state) {
-            if (state is AuthenticationUninitialized) {
-              return SplashPage();
-            }
-            if (state is FirstStart) {
-              return OnBoardingPage();
-            }
-            if (state is AuthenticationUnauthenticated) {
-              return LoginPage(userRepository: _userRepository);
-            }
-            if (state is AuthenticationAuthenticated) {
-              return DashboardPage(userRepository: _userRepository);
-            }
-          },
-        ),
-        theme: ThemeData(
-          primaryColor: Color.fromRGBO(236, 114, 8, 1.0),
-        ),
+        home: Home(),
       ),
     );
   }
 }
 
-class SimpleBlocDelegate extends BlocDelegate {
+class Home extends StatelessWidget {
   @override
-  void onTransition(Transition transition) {
-    super.onTransition(transition);
-    print(transition.toString());
-  }
-
-  @override
-  void onError(Object error, StackTrace stacktrace) {
-    super.onError(error, stacktrace);
-    print(error);
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Home')),
+      body: BlocListener(
+        bloc: BlocProvider.of<DataBloc>(context),
+        listener: (BuildContext context, DataState state) {
+          if (state is Success) {
+            Scaffold.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor: Colors.green,
+                content: Text('Success'),
+              ),
+            );
+          }
+        },
+        child: BlocBuilder(
+          bloc: BlocProvider.of<DataBloc>(context),
+          builder: (BuildContext context, DataState state) {
+            if (state is Initial) {
+              return Center(child: Text('Press the Button'));
+            }
+            if (state is Loading) {
+              return Center(child: CircularProgressIndicator());
+            }
+            if (state is Success) {
+              return Center(child: Text('Success'));
+            }
+          },
+        ),
+      ),
+      floatingActionButton: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+            child: Icon(Icons.play_arrow),
+            onPressed: () {
+              BlocProvider.of<DataBloc>(context).dispatch(FetchData());
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
 
-void main() {
-  final UserRepository userRepository = UserRepository(
-    moodleApiClient: MoodleApiClient(
-      httpClient: http.Client(),
-    ),
-  );
+@immutable
+abstract class DataEvent {}
 
-  BlocSupervisor().delegate = SimpleBlocDelegate();
+class FetchData extends DataEvent {}
 
-  runApp(ES4studentsApp(userRepository: userRepository));
+@immutable
+abstract class DataState {}
+
+class Initial extends DataState {}
+
+class Loading extends DataState {}
+
+class Success extends DataState {}
+
+class DataBloc extends Bloc<DataEvent, DataState> {
+  @override
+  DataState get initialState => Initial();
+
+  @override
+  Stream<DataState> mapEventToState(
+    DataEvent event,
+  ) async* {
+    if (event is FetchData) {
+      yield Loading();
+      await Future.delayed(Duration(seconds: 2));
+      yield Success();
+    }
+  }
 }

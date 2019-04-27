@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:ES4students/data/models.dart';
+import 'package:ES4students/data/models/models.dart';
 import 'package:bloc/bloc.dart';
 import 'package:ES4students/repository/course_repository.dart';
 
@@ -28,7 +28,7 @@ class RefreshCourseList extends CourseListEvent {
 }
 
 class CourseSelected extends CourseListEvent {
-  final int courseid;
+  //final int courseid;
 }
 
 // ----------------------------------------------------------------------------

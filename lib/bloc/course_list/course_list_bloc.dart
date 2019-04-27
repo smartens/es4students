@@ -1,57 +1,8 @@
 import 'dart:async';
 
-import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
-import 'package:es4students/data/models/models.dart';
 import 'package:bloc/bloc.dart';
-
-@immutable
-abstract class CourseListEvent extends Equatable {
-  CourseListEvent([List props = const []]) : super(props);
-}
-
-class FetchCourseList extends CourseListEvent {
-  final int userid;
-
-  FetchCourseList({@required this.userid})
-      : assert(userid != null),
-        super([userid]);
-}
-
-class RefreshCourseList extends CourseListEvent {
-  final int userid;
-
-  RefreshCourseList({@required this.userid})
-      : assert(userid != null),
-        super([userid]);
-}
-
-class CourseSelected extends CourseListEvent {
-  //final int courseid;
-}
-
-// ----------------------------------------------------------------------------
-
-@immutable
-abstract class CourseListState extends Equatable {
-  CourseListState([List props = const []]) : super(props);
-}
-
-class CourseListEmpty extends CourseListState {}
-
-class CourseListLoading extends CourseListState {}
-
-class CourseListLoaded extends CourseListState {
-  final List<Course> courseList;
-
-  CourseListLoaded({@required this.courseList})
-      : assert(courseList != null),
-        super([courseList]);
-}
-
-class CourseListError extends CourseListState {}
-
-// ----------------------------------------------------------------------------
+import 'package:es4students/bloc/course_list/course_list_event.dart';
+import 'package:es4students/bloc/course_list/course_list_state.dart';
 
 class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
   //final CourseRepository courseRepository;

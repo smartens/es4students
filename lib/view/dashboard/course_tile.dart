@@ -82,12 +82,12 @@ class CourseTile extends StatelessWidget {
       ),
     );
   }
-}
 
-_launchURL({String url = 'https://flutter.io'}) async {
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
+  _launchURL({String url = 'https://flutter.io'}) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

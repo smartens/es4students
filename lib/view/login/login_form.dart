@@ -1,3 +1,5 @@
+import 'package:url_launcher/url_launcher.dart';
+
 import 'package:ES4students/authentication/authentication_bloc.dart';
 import 'package:ES4students/login/login_bloc.dart';
 import 'package:ES4students/login/login_event.dart';
@@ -33,10 +35,8 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return BlocBuilder<LoginEvent, LoginState>(
       bloc: _loginBloc,
-      builder: (
-        BuildContext context,
-        LoginState state,
-      ) {
+      builder: (BuildContext context,
+          LoginState state,) {
         if (state is LoginFailure) {
           _onWidgetDidBuild(() {
             Scaffold.of(context).showSnackBar(
@@ -123,6 +123,21 @@ class _LoginFormState extends State<LoginForm> {
                   height: 12.0,
                 ),
                 loginButton,
+                SizedBox(
+                  height: 8.0,
+                ),
+                Center(
+                  child: InkWell(
+                    onTap: () =>
+                        _launchURL(
+                            'https://es4students.de/elearning/login/forgot_password.php'
+                        ),
+                    child: Text(
+                      'Benutzername oder Kennwort vergessen?',
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ),
+                ),
                 Center(
                   child: state is LoginLoading
                       ? CircularProgressIndicator()
@@ -147,5 +162,13 @@ class _LoginFormState extends State<LoginForm> {
       username: _usernameController.text,
       password: _passwordController.text,
     ));
+  }
+
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

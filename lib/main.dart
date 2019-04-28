@@ -1,5 +1,7 @@
+import 'package:ES4students/network/moodle_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,9 +44,8 @@ class ES4studentsAppState extends State<ES4studentsApp> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: Color.fromRGBO(236, 114, 8, 1.0)
-    ));
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark
+        .copyWith(statusBarColor: Color.fromRGBO(236, 114, 8, 1.0)));
     return BlocProvider<AuthenticationBloc>(
       bloc: _authenticationBloc,
       child: MaterialApp(
@@ -83,6 +84,12 @@ class SimpleBlocDelegate extends BlocDelegate {
 }
 
 void main() {
+  final UserRepository userRepository = UserRepository(
+    moodleApiClient: MoodleApiClient(
+      httpClient: http.Client(),
+    ),
+  );
+
   BlocSupervisor().delegate = SimpleBlocDelegate();
-  runApp(ES4studentsApp(userRepository: UserRepository()));
+  runApp(ES4studentsApp(userRepository: userRepository));
 }

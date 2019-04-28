@@ -28,7 +28,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
       try {
         /// Token besorgen von Moodle
-        final token = await userRepository.authenticate(
+        final token = await userRepository.getToken(
             username: event.username, password: event.password);
 
         authenticationBloc.dispatch(LoggedIn(token: token));

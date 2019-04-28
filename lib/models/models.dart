@@ -5,6 +5,40 @@ import 'package:json_annotation/json_annotation.dart';
 part 'models.g.dart';
 
 @JsonSerializable()
+class Error {
+  String error;
+  String errorcode;
+  String stacktrace;
+  String debuginfo;
+  String reproductionlink;
+
+  Error(
+    this.error,
+    this.errorcode,
+    this.stacktrace,
+    this.debuginfo,
+    this.reproductionlink,
+  );
+
+  factory Error.fromJson(Map<String, dynamic> json) => _$ErrorFromJson(json);
+  Map<String, dynamic> toJson() => _$ErrorToJson(this);
+}
+
+@JsonSerializable()
+class Token {
+  String token;
+  String privatetoken;
+
+  Token({
+    this.token,
+    this.privatetoken,
+  });
+
+  factory Token.fromJson(Map<String, dynamic> json) => _$TokenFromJson(json);
+  Map<String, dynamic> toJson() => _$TokenToJson(this);
+}
+
+@JsonSerializable()
 class User {
   int userid;
   String username;
@@ -179,7 +213,8 @@ class Content {
     this.license,
   });
 
-  factory Content.fromJson(Map<String, dynamic> json) => _$ContentFromJson(json);
+  factory Content.fromJson(Map<String, dynamic> json) =>
+      _$ContentFromJson(json);
   Map<String, dynamic> toJson() => _$ContentToJson(this);
 }
 

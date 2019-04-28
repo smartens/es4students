@@ -6,6 +6,34 @@ part of 'models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+Error _$ErrorFromJson(Map<String, dynamic> json) {
+  return Error(
+      json['error'] as String,
+      json['errorcode'] as String,
+      json['stacktrace'] as String,
+      json['debuginfo'] as String,
+      json['reproductionlink'] as String);
+}
+
+Map<String, dynamic> _$ErrorToJson(Error instance) => <String, dynamic>{
+      'error': instance.error,
+      'errorcode': instance.errorcode,
+      'stacktrace': instance.stacktrace,
+      'debuginfo': instance.debuginfo,
+      'reproductionlink': instance.reproductionlink
+    };
+
+Token _$TokenFromJson(Map<String, dynamic> json) {
+  return Token(
+      token: json['token'] as String,
+      privatetoken: json['privatetoken'] as String);
+}
+
+Map<String, dynamic> _$TokenToJson(Token instance) => <String, dynamic>{
+      'token': instance.token,
+      'privatetoken': instance.privatetoken
+    };
+
 User _$UserFromJson(Map<String, dynamic> json) {
   return User(
       json['userid'] as int,

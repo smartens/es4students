@@ -14,17 +14,17 @@ class OnBoardingPage extends StatelessWidget {
     PageViewModel(
         "Deine Lernmaterialen überall dabei", //Titel
         "", //Beschreibung
-      image: Image.asset('images/mobility_icon.png', width: 250),
+      image: Center(child: Image.asset('images/mobility_icon.png', width: 250)),
     ),
     PageViewModel(
         "Fordere dich in einem Quiz heraus", //Titel
         "", //Beschreibung leer
-      image: Image.asset('images/test_icon.png', width: 250),
+      image: Center(child: Image.asset('images/test_icon.png', width: 250)),
     ),
     PageViewModel(
         "Checke deine Fortschritte", //Titel
         "", //Beschreibung
-      image: Image.asset('images/process_icon.png', width: 250),
+      image: Center(child: Image.asset('images/process_icon.png', width: 250)),
     ),
   ];
 

@@ -93,6 +93,17 @@ class _LoginFormState extends State<LoginForm> {
           ),
         );
 
+        final passwordResetButton = RaisedButton(
+          shape: StadiumBorder(),
+          color: Color.fromRGBO(245, 245, 248, 1.0),
+          onPressed:
+          state is! PasswordResetLoading ? _onPasswordResetButtonPressed : null,
+          child: Text(
+            "Password vergessen",
+            style: TextStyle(color: Color.fromRGBO(236, 114, 8, 1.0)),
+          ),
+        );
+
         return Form(
           child: Center(
             child: ListView(
@@ -126,17 +137,9 @@ class _LoginFormState extends State<LoginForm> {
                 SizedBox(
                   height: 8.0,
                 ),
-                Center(
-                  child: InkWell(
-                    onTap: () =>
-                        _launchURL(
-                            'https://es4students.de/elearning/login/forgot_password.php'
-                        ),
-                    child: Text(
-                      'Benutzername oder Kennwort vergessen?',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  ),
+                passwordResetButton,
+                SizedBox(
+                  height: 8.0,
                 ),
                 Center(
                   child: state is LoginLoading
@@ -164,7 +167,8 @@ class _LoginFormState extends State<LoginForm> {
     ));
   }
 
-  _launchURL(String url) async {
+  _onPasswordResetButtonPressed() async {
+    String url = 'https://es4students.de/elearning/login/forgot_password.php';
     if (await canLaunch(url)) {
       await launch(url);
     } else {

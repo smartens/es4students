@@ -42,7 +42,6 @@ class UserRepository {
   Future<int> getUserId() async {
     sharedPreferences = await SharedPreferences.getInstance();
     String token = sharedPreferences.get('token');
-
     User user = await moodleApiClient.fetchUserData(token);
 
     return user.userid;

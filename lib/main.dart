@@ -1,4 +1,5 @@
 import 'package:ES4students/network/moodle_client.dart';
+import 'package:ES4students/repository/course_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -92,4 +93,11 @@ void main() {
 
   BlocSupervisor().delegate = SimpleBlocDelegate();
   runApp(ES4studentsApp(userRepository: userRepository));
+
+  //Backend Testing
+  /*
+  final CourseRepository courseRepository = new CourseRepository(moodleApiClient: MoodleApiClient(httpClient: http.Client()));
+  await userRepository.getUserId();
+  await courseRepository.getCourseName();
+*/
 }

@@ -16,6 +16,7 @@ class MoodleApiClient {
   static const moodleService = 'moodle_mobile_app';
   static const restFormat = 'json';
   final http.Client httpClient;
+  static int userid;
 
   MoodleApiClient({@required this.httpClient}) : assert(httpClient != null);
 
@@ -48,11 +49,14 @@ class MoodleApiClient {
     }
 
     Map userDataMap = jsonDecode(userDataReponse.body);
+    userid = userDataMap['userid'];
+
     return User.fromJson(userDataMap);
   }
 
-  Future<List<Course>> fetchUserCoursesList(String token, int userid) async {
+  Future<AllCourses> fetchUserCoursesList(String token) async {
     final wsfunction = 'core_enrol_get_users_courses';
+
     final userCoursesDataUrl =
         '$baseUrl/webservice/rest/server.php?wstoken=$token&wsfunction=$wsfunction&moodlewsrestformat=$restFormat&userid=$userid';
 
@@ -63,10 +67,10 @@ class MoodleApiClient {
       throw Exception('Error getting userCoursesList');
     }
 
-    Iterable list = jsonDecode(userCoursesListResponse.body);
-    List<Course> userCoursesList =
-        list.map((course) => Course.fromJson(course)).toList();
-    return userCoursesList;
+    final jsonResponse = jsonDecode(userCoursesListResponse.body);
+    AllCourses allCourses = AllCourses.fromJson(jsonResponse);
+
+    return allCourses;
   }
 
   Future<List<Section>> fetchCourseSections(String token, int courseid) async {

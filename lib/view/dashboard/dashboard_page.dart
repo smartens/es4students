@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ES4students/authentication/authentication_event.dart';
 import 'package:ES4students/authentication/authentication_bloc.dart';
 import 'package:ES4students/repository/user_repository.dart';
+import 'package:ES4students/view/profile_page.dart';
 
 import 'course_tile.dart';
 
@@ -128,26 +129,31 @@ class _DashboardPageState extends State<DashboardPage> {
                             children: <Widget>[
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 8.0),
-                                child: CircleAvatar(
-                                  backgroundImage: _userPictureURL.isNotEmpty
-                                      ? NetworkImage(_userPictureURL)
-                                      : AssetImage(
-                                          "images/default_profile_pic.jpeg"),
-                                  backgroundColor: Colors.white,
-                                  maxRadius: 56.0,
+                                child: GestureDetector(
+                                  onTap: () =>
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ProfilePage(
+                                                    userRepository: widget
+                                                        .userRepository,)
+                                          )
+                                      ),
+                                  child: CircleAvatar(
+                                    backgroundImage: _userPictureURL.isNotEmpty
+                                        ? NetworkImage(_userPictureURL)
+                                        : AssetImage(
+                                        "images/default_profile_pic.jpeg"),
+                                    backgroundColor: Colors.white,
+                                    maxRadius: 56.0,
+                                  ),
                                 ),
                               ),
                               Text(
                                 _fullName,
                                 style: TextStyle(
                                     fontSize: 24.0, color: Colors.white),
-                              ),
-                              SizedBox(
-                                height: 8.0,
-                              ),
-                              Text(
-                                'Student', //TODO: Verweis für Status
-                                style: TextStyle(color: Colors.white),
                               ),
                             ],
                           ),

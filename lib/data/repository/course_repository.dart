@@ -6,15 +6,11 @@ import 'dart:async';
 
 class CourseRepository {
   final MoodleApiClient moodleApiClient;
-  SharedPreferences sharedPreferences;
 
   CourseRepository({@required this.moodleApiClient})
       : assert(moodleApiClient != null);
 
-  Future<AllCourses> getCourseName() async {
-    sharedPreferences = await SharedPreferences.getInstance();
-    String token = sharedPreferences.get('token');
-    AllCourses allCourses = await moodleApiClient.fetchUserCoursesList(token);
-    return allCourses;
+  Future<List<Course>> getCourseList(String token) async {
+    return await moodleApiClient.fetchUserCourseList(token);
   }
 }

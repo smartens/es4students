@@ -55,24 +55,7 @@ class User {
   Map<String, dynamic> toJson() => _$UserToJson(this);
 }
 
-class AllCourses {
-  List<Course> course;
-
-  AllCourses({
-    this.course
-});
-
-  factory AllCourses.fromJson(List<dynamic> parsedJson) {
-
-    List<Course> course = new List<Course>();
-    course = parsedJson.map((i)=>Course.fromJson(i)).toList();
-
-    return new AllCourses(
-      course: course
-    );
-  }
-}
-
+@JsonSerializable()
 class Course {
   int id;
   String shortname;

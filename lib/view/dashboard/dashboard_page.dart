@@ -4,15 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 
-<<<<<<< HEAD
-=======
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:ES4students/authentication/authentication_event.dart';
 import 'package:ES4students/authentication/authentication_bloc.dart';
 import 'package:ES4students/repository/user_repository.dart';
 
->>>>>>> e0c88eaf01eb719c2dd3f9374414c3ccfecb924d
 import 'course_tile.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -100,65 +97,12 @@ class _DashboardPageState extends State<DashboardPage> {
     );
 
     return Scaffold(
-<<<<<<< HEAD
       appBar: PreferredSize(
           child: AppBar(
             backgroundColor: Color.fromRGBO(236, 114, 8, 1.0),
             elevation: 0.0,
           ),
           preferredSize: Size.fromHeight(0.0)),
-      body: SafeArea(
-        top: true,
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverAppBar(
-              title: const Text('Übersicht'),
-              centerTitle: true,
-              actions: <Widget>[logoutButton],
-              expandedHeight: 256.0,
-              pinned: true,
-              flexibleSpace: FlexibleSpaceBar(
-                background: Stack(
-                  fit: StackFit.loose,
-                  children: <Widget>[
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          top: 70.0,
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 8.0),
-                              child: CircleAvatar(
-                                backgroundImage: _userPictureURL.isNotEmpty
-                                    ? NetworkImage(_userPictureURL)
-                                    : AssetImage(
-                                        "images/default_profile_pic.jpeg"),
-                                backgroundColor: Colors.white,
-                                maxRadius: 56.0,
-                              ),
-                            ),
-                            Text(
-                              _fullName,
-                              style: TextStyle(
-                                  fontSize: 24.0, color: Colors.white),
-                            ),
-                            SizedBox(
-                              height: 8.0,
-                            ),
-                            Text(
-                              'Student', //TODO: Verweis für Status
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
-=======
-      appBar: PreferredSize(child: AppBar(
-        backgroundColor: Color.fromRGBO(236, 114, 8, 1.0),
-        elevation: 0.0,
-      ),
-          preferredSize: Size.fromHeight(0.0)
-      ),
       body: WillPopScope(
         onWillPop: () => onWillPop(),
         child: SafeArea(
@@ -185,18 +129,18 @@ class _DashboardPageState extends State<DashboardPage> {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 8.0),
                                 child: CircleAvatar(
-                                  backgroundImage: _userPictureURL.isNotEmpty ?
-                                  NetworkImage(_userPictureURL)
+                                  backgroundImage: _userPictureURL.isNotEmpty
+                                      ? NetworkImage(_userPictureURL)
                                       : AssetImage(
-                                      "images/default_profile_pic.jpeg"),
+                                          "images/default_profile_pic.jpeg"),
                                   backgroundColor: Colors.white,
                                   maxRadius: 56.0,
                                 ),
                               ),
                               Text(
                                 _fullName,
-                                style:
-                                TextStyle(fontSize: 24.0, color: Colors.white),
+                                style: TextStyle(
+                                    fontSize: 24.0, color: Colors.white),
                               ),
                               SizedBox(
                                 height: 8.0,
@@ -207,7 +151,6 @@ class _DashboardPageState extends State<DashboardPage> {
                               ),
                             ],
                           ),
->>>>>>> e0c88eaf01eb719c2dd3f9374414c3ccfecb924d
                         ),
                       )
                     ],

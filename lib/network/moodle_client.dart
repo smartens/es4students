@@ -27,12 +27,13 @@ class MoodleApiClient {
         '$baseUrl/login/token.php?username=$username&password=$password&service=$moodleService';
     final tokenResponse = await this.httpClient.get(tokenUrl);
 
-    if (tokenResponse.statusCode != 200) {
-      throw Exception('Error getting token');
-    }
-
     final tokenJson = jsonDecode(tokenResponse.body);
-    return tokenJson['token'];
+
+    if (tokenJson['token'] != null) {
+      return tokenJson['token'];
+    }else{
+      throw new Exception("Username / Passwort ist falsch!");
+    }
   }
 
   Future<User> fetchUserData(String token) async {

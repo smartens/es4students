@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:ES4students/authentication/authentication_bloc.dart';
-import 'package:ES4students/login/login_bloc.dart';
+import 'package:ES4students/bloc/authentication/authentication_bloc.dart';
+import 'package:ES4students/bloc/login/login_bloc.dart';
 import 'package:ES4students/repository/user_repository.dart';
 
 import 'login_form.dart';
@@ -13,7 +13,7 @@ class LoginPage extends StatefulWidget {
   LoginPage({
     Key key,
     @required this.userRepository,
-  }) : assert(userRepository != null),
+  })  : assert(userRepository != null),
         super(key: key);
 
   @override
@@ -31,9 +31,9 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     _authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
     _loginBloc = LoginBloc(
-        userRepository: _userRepository,
-        authenticationBloc: _authenticationBloc,
-        );
+      userRepository: _userRepository,
+      authenticationBloc: _authenticationBloc,
+    );
     super.initState();
   }
 

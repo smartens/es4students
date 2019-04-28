@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:meta/meta.dart';
 
-import 'package:ES4students/models/models.dart';
+import 'package:ES4students/data/models/models.dart';
 
 class MoodleApiClient {
   static const baseUrl = 'https://es4students.de/elearning';
@@ -32,7 +32,7 @@ class MoodleApiClient {
 
     if (tokenJson['token'] != null) {
       return tokenJson['token'];
-    }else{
+    } else {
       throw new Exception("Username / Passwort ist falsch!");
     }
   }
@@ -77,7 +77,7 @@ class MoodleApiClient {
     final wsfunction = 'core_course_get_contents';
     final url =
         '$baseUrl/webservice/rest/server.php?wstoken=$token&wsfunction=$wsfunction&moodlewsrestformat=$restFormat&userid=$courseid';
-    
+
     final courseSectionsListResponse = await this.httpClient.get(url);
 
     if (courseSectionsListResponse.statusCode != 200) {
@@ -85,7 +85,8 @@ class MoodleApiClient {
     }
 
     Iterable list = jsonDecode(courseSectionsListResponse.body);
-    List<Section> courseSectionsList = list.map((section) => Section.fromJson(section)).toList();
+    List<Section> courseSectionsList =
+        list.map((section) => Section.fromJson(section)).toList();
     return courseSectionsList;
   }
 }

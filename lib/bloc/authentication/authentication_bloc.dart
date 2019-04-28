@@ -4,12 +4,10 @@ import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 import 'package:ES4students/repository/user_repository.dart';
 
-import 'package:ES4students/authentication/authentication_event.dart';
-import 'package:ES4students/authentication/authentication_state.dart';
+import 'package:ES4students/bloc/authentication/authentication_event.dart';
+import 'package:ES4students/bloc/authentication/authentication_state.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
-
-
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
@@ -29,7 +27,6 @@ class AuthenticationBloc
       final bool hasToken = await userRepository.hasToken();
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      
 
       if (hasToken) {
         yield AuthenticationAuthenticated();

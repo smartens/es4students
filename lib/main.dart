@@ -1,4 +1,4 @@
-import 'package:ES4students/network/moodle_client.dart';
+import 'package:ES4students/data/provider/moodle_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -6,9 +6,9 @@ import 'package:http/http.dart' as http;
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:ES4students/authentication/authentication_bloc.dart';
-import 'package:ES4students/authentication/authentication_event.dart';
-import 'package:ES4students/authentication/authentication_state.dart';
+import 'package:ES4students/bloc/authentication/authentication_bloc.dart';
+import 'package:ES4students/bloc/authentication/authentication_event.dart';
+import 'package:ES4students/bloc/authentication/authentication_state.dart';
 import 'package:ES4students/repository/user_repository.dart';
 import 'package:ES4students/view/dashboard/dashboard_page.dart';
 import 'package:ES4students/view/login/login_page.dart';

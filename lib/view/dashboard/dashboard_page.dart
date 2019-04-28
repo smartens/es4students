@@ -6,8 +6,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:ES4students/authentication/authentication_event.dart';
-import 'package:ES4students/authentication/authentication_bloc.dart';
+import 'package:ES4students/bloc/authentication/authentication_event.dart';
+import 'package:ES4students/bloc/authentication/authentication_bloc.dart';
 import 'package:ES4students/repository/user_repository.dart';
 import 'package:ES4students/view/profile_page.dart';
 
@@ -130,21 +130,18 @@ class _DashboardPageState extends State<DashboardPage> {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 20.0),
                                 child: GestureDetector(
-                                  onTap: () =>
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ProfilePage(
-                                                    userRepository: widget
-                                                        .userRepository,)
-                                          )
-                                      ),
+                                  onTap: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => ProfilePage(
+                                                userRepository:
+                                                    widget.userRepository,
+                                              ))),
                                   child: CircleAvatar(
                                     backgroundImage: _userPictureURL.isNotEmpty
                                         ? NetworkImage(_userPictureURL)
                                         : AssetImage(
-                                        "images/default_profile_pic.jpeg"),
+                                            "images/default_profile_pic.jpeg"),
                                     backgroundColor: Colors.white,
                                     maxRadius: 56.0,
                                   ),

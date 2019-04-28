@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:ES4students/authentication/authentication_event.dart';
-import 'package:ES4students/authentication/authentication_bloc.dart';
+import 'package:ES4students/bloc/authentication/authentication_event.dart';
+import 'package:ES4students/bloc/authentication/authentication_bloc.dart';
 import 'package:ES4students/repository/user_repository.dart';
 
 class ProfilePage extends StatefulWidget {

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:ES4students/view/course/course_page.dart';
-import 'package:ES4students/view/course/course_section_tile.dart';
+//import 'package:ES4students/view/course/course_page.dart';
+//import 'package:ES4students/view/course/course_section_tile.dart';
+import 'package:ES4students/view/quiz/quiz_main_page.dart';
 
 class CourseTile extends StatelessWidget {
   CourseTile({Key key, @required this.name, @required this.description,
@@ -24,7 +25,8 @@ class CourseTile extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(builder: (context) =>
-                  CoursePage(
+                  QuizMainPage(name: 'Standard-Quiz')
+                /*CoursePage(
                     name: name,
                     courseSections: [
                       CourseSectionTile(
@@ -36,7 +38,8 @@ class CourseTile extends StatelessWidget {
                         description: "Hier findet ihr Fragenkataloge zum Vorlesungsinhalt, mit denen ihr euren Wissenstands selbstständig überprüfen könnt. Nach Beendigung eines Vorlesungskapitels wird hier jeweils ein Test zum entsprechnenden Kapitel hochgeladen.",
                       )
                     ],
-                  ))
+                  )*/
+              )
           );
         },
         child: Card(

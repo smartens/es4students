@@ -2,6 +2,7 @@ import 'package:ES4students/models/models.dart';
 import 'package:ES4students/network/moodle_client.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
 
 class CourseRepository {
   final MoodleApiClient moodleApiClient;

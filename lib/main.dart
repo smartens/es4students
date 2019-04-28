@@ -1,5 +1,4 @@
 import 'package:ES4students/network/moodle_client.dart';
-import 'package:ES4students/repository/course_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;

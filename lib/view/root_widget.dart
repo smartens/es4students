@@ -23,7 +23,8 @@ class _RootWidgetState extends State<RootWidget> {
   @override
   void initState() {
     super.initState();
-    _authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
+    _authenticationBloc = AuthenticationBloc();
+    _authenticationBloc.dispatch(AppStarted());
   }
 
   @override
@@ -31,7 +32,9 @@ class _RootWidgetState extends State<RootWidget> {
     return BlocProvider(
       bloc: AuthenticationBloc(),
       child: MaterialApp(
-        home: LoginPage(userRepository: widget._userRepository,),
+        home: LoginPage(
+          userRepository: widget._userRepository,
+        ),
       ),
     );
   }

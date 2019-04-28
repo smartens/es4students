@@ -11,6 +11,11 @@ class CourseRepository {
       : assert(moodleApiClient != null);
 
   Future<List<Course>> getCourseList(String token) async {
-    return await moodleApiClient.fetchUserCourseList(token);
+    User user = await moodleApiClient.fetchUserData(token);
+    return await moodleApiClient.fetchUserCourseList(token, user.userid);
+  }
+
+  Future<List<Section>> getCourseSections(String token, int courseid) async {
+    return await moodleApiClient.fetchCourseSections(token, courseid);
   }
 }

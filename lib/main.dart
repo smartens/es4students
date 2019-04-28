@@ -1,5 +1,6 @@
 import 'package:ES4students/bloc/simple_bloc_delegate.dart';
 import 'package:ES4students/data/provider/moodle_client.dart';
+import 'package:ES4students/data/repository/component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -87,9 +88,9 @@ void main() {
   runApp(ES4studentsApp(userRepository: userRepository));
 
   //Backend Testing
-  /*
-  final CourseRepository courseRepository = new CourseRepository(moodleApiClient: MoodleApiClient(httpClient: http.Client()));
-  await userRepository.getUserId();
-  await courseRepository.getCourseName();
-*/
+
+  final CourseRepository courseRepository = CourseRepository(
+      moodleApiClient: MoodleApiClient(httpClient: http.Client()));
+  print(userRepository.getUserId('124da2c217605ccb2fe6d69782828cad'));
+  print(courseRepository.getCourseList('124da2c217605ccb2fe6d69782828cad'));
 }

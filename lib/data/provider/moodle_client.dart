@@ -24,9 +24,9 @@ class MoodleApiClient {
     @required String username,
     @required String password,
   }) async {
-    final tokenUrl =
+    final url =
         '$baseUrl/login/token.php?username=$username&password=$password&service=$moodleService';
-    final tokenResponse = await this.httpClient.get(tokenUrl);
+    final tokenResponse = await this.httpClient.get(url);
 
     final tokenJson = jsonDecode(tokenResponse.body);
 
@@ -39,36 +39,43 @@ class MoodleApiClient {
 
   Future<User> fetchUserData(String token) async {
     final wsfunction = 'core_webservice_get_site_info';
-    final userDataUrl =
+    final url =
         '$baseUrl/webservice/rest/server.php?wstoken=$token&wsfunction=$wsfunction&moodlewsrestformat=$restFormat';
 
-    final userDataReponse = await this.httpClient.get(userDataUrl);
+    final response = await this.httpClient.get(url);
 
-    if (userDataReponse.statusCode != 200) {
+    if (response.statusCode != 200) {
       throw Exception('Error getting userData');
     }
 
-    Map userDataMap = jsonDecode(userDataReponse.body);
+    Map userDataMap = jsonDecode(response.body);
     userid = userDataMap['userid'];
 
     return User.fromJson(userDataMap);
   }
 
-  Future<List<Course>> fetchUserCourseList(String token) async {
+  Future<List<Course>> fetchUserCourseList(String token, int userid) async {
     final wsfunction = 'core_enrol_get_users_courses';
 
     final userCoursesDataUrl =
         '$baseUrl/webservice/rest/server.php?wstoken=$token&wsfunction=$wsfunction&moodlewsrestformat=$restFormat&userid=$userid';
 
-    final userCourseListResponse =
-        await this.httpClient.get(userCoursesDataUrl);
+    final response = await this.httpClient.get(userCoursesDataUrl);
 
-    if (userCourseListResponse.statusCode != 200) {
+    if (response.statusCode != 200) {
       throw Exception('Error getting userCoursesList');
     }
 
-    final jsonResponse = jsonDecode(userCourseListResponse.body);
-    return jsonResponse.map((i) => Course.fromJson(i)).toList();
+    Iterable list = jsonDecode(response.body);
+
+    print(list);
+
+    List<Course> h = list.map((i) => Course.fromJson(i)).toList();
+    print(h);
+    for (var course in h) {
+      print(course.shortname);
+    }
+    return h;
   }
 
   Future<List<Section>> fetchCourseSections(String token, int courseid) async {
@@ -76,13 +83,13 @@ class MoodleApiClient {
     final url =
         '$baseUrl/webservice/rest/server.php?wstoken=$token&wsfunction=$wsfunction&moodlewsrestformat=$restFormat&userid=$courseid';
 
-    final courseSectionsListResponse = await this.httpClient.get(url);
+    final response = await this.httpClient.get(url);
 
-    if (courseSectionsListResponse.statusCode != 200) {
+    if (response.statusCode != 200) {
       throw Exception('Error getting Course Sections');
     }
 
-    Iterable list = jsonDecode(courseSectionsListResponse.body);
+    Iterable list = jsonDecode(response.body);
     List<Section> courseSectionsList =
         list.map((section) => Section.fromJson(section)).toList();
     return courseSectionsList;

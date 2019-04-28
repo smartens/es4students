@@ -32,7 +32,7 @@ class _RootWidgetState extends State<RootWidget> {
     return BlocProvider(
       bloc: AuthenticationBloc(),
       child: MaterialApp(
-        home: LoginPage(
+        home: LoginScreen(
           userRepository: widget._userRepository,
         ),
       ),

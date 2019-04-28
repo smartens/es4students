@@ -1,5 +1,6 @@
 import 'package:es4students/bloc/authentication/component.dart';
 import 'package:es4students/bloc/login/login_state.dart';
+import 'package:es4students/view/dashboard/dashboard_page.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,22 +20,38 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: AppBar(
-        title: Text('es4students'),
-        centerTitle: true,
-      ),
-      body: BlocListener(
-          bloc: BlocProvider.of<AuthenticationBloc>(context),
-          listener: (BuildContext context, AuthenticationState state) {
-            if (state is LoginFailure) {}
-          },
-          child: BlocBuilder(
+    return BlocProvider(
+      bloc: LoginBloc(
+          userRepository: userRepository,
+          authenticationBloc: BlocProvider.of<AuthenticationBloc>(context)),
+      child: new Scaffold(
+        appBar: AppBar(
+          title: Text('es4students'),
+          centerTitle: true,
+        ),
+        body: BlocListener(
             bloc: BlocProvider.of<AuthenticationBloc>(context),
-            builder: (BuildContext context, AuthenticationState state) {
-              return Container();
+            listener: (BuildContext context, AuthenticationState state) {
+              if (state is AuthenticationAuthenticated) {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => DashboardPage(
+                          userRepository: userRepository,
+                        )));
+              }
             },
-          )),
+            child: BlocBuilder(
+              bloc: BlocProvider.of<LoginBloc>(context),
+              builder: (BuildContext context, LoginState state) {
+                if (state is AuthenticationUnauthenticated) {
+                  return LoginForm(
+                    loginBloc: BlocProvider.of<LoginBloc>(context),
+                    authenticationBloc:
+                        BlocProvider.of<AuthenticationBloc>(context),
+                  );
+                }
+              },
+            )),
+      ),
     );
   }
 }

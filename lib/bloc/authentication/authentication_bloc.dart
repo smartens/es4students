@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
-import 'package:ES4students/repository/user_repository.dart';
+import 'package:ES4students/data/repository/user_repository.dart';
 
 import 'package:ES4students/bloc/authentication/authentication_event.dart';
 import 'package:ES4students/bloc/authentication/authentication_state.dart';

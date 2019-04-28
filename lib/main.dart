@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ES4students/bloc/authentication/authentication_bloc.dart';
 import 'package:ES4students/bloc/authentication/authentication_event.dart';
 import 'package:ES4students/bloc/authentication/authentication_state.dart';
-import 'package:ES4students/repository/user_repository.dart';
+import 'package:ES4students/data/repository/user_repository.dart';
 import 'package:ES4students/view/dashboard/dashboard_page.dart';
 import 'package:ES4students/view/login/login_page.dart';
 import 'package:ES4students/view/splash_page.dart';

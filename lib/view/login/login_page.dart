@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:ES4students/bloc/authentication/authentication_bloc.dart';
 import 'package:ES4students/bloc/login/login_bloc.dart';
-import 'package:ES4students/repository/user_repository.dart';
+import 'package:ES4students/data/repository/user_repository.dart';
 
 import 'login_form.dart';
 

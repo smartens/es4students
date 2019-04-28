@@ -116,7 +116,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Column(
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.only(bottom: 8.0),
+                              padding: const EdgeInsets.only(bottom: 20.0),
                               child: CircleAvatar(
                                 backgroundImage: _userPictureURL.isNotEmpty
                                     ? NetworkImage(_userPictureURL)

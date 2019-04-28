@@ -128,7 +128,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           child: Column(
                             children: <Widget>[
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 8.0),
+                                padding: const EdgeInsets.only(bottom: 20.0),
                                 child: GestureDetector(
                                   onTap: () =>
                                       Navigator.push(

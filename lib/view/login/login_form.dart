@@ -35,8 +35,10 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return BlocBuilder<LoginEvent, LoginState>(
       bloc: _loginBloc,
-      builder: (BuildContext context,
-          LoginState state,) {
+      builder: (
+        BuildContext context,
+        LoginState state,
+      ) {
         if (state is LoginFailure) {
           _onWidgetDidBuild(() {
             Scaffold.of(context).showSnackBar(
@@ -63,8 +65,9 @@ class _LoginFormState extends State<LoginForm> {
           obscureText: _obscureText,
           decoration: InputDecoration(
             hintText: "Passwort",
-            errorText:
-            _showValidationError ? "Benutzername oder Passwort falsch" : null,
+            errorText: _showValidationError
+                ? "Benutzername oder Passwort falsch"
+                : null,
             border: UnderlineInputBorder(),
             suffixIcon: GestureDetector(
               onTap: () {
@@ -82,11 +85,8 @@ class _LoginFormState extends State<LoginForm> {
 
         final loginButton = RaisedButton(
           shape: StadiumBorder(),
-          color: Theme
-              .of(context)
-              .primaryColor,
-          onPressed:
-          state is! LoginLoading ? _onLoginButtonPressed : null,
+          color: Theme.of(context).primaryColor,
+          onPressed: state is! LoginLoading ? _onLoginButtonPressed : null,
           child: Text(
             "Anmelden",
             style: TextStyle(color: Colors.white),
@@ -97,7 +97,7 @@ class _LoginFormState extends State<LoginForm> {
           shape: StadiumBorder(),
           color: Color.fromRGBO(245, 245, 248, 1.0),
           onPressed:
-          state is! PasswordResetLoading ? _onPasswordResetButtonPressed : null,
+              state is! LoginLoading ? _onPasswordResetButtonPressed : null,
           child: Text(
             "Password vergessen",
             style: TextStyle(color: Color.fromRGBO(236, 114, 8, 1.0)),

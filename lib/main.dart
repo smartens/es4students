@@ -1,3 +1,4 @@
+import 'package:ES4students/bloc/simple_bloc_delegate.dart';
 import 'package:ES4students/data/provider/moodle_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -72,14 +73,6 @@ class ES4studentsAppState extends State<ES4studentsApp> {
         ),
       ),
     );
-  }
-}
-
-class SimpleBlocDelegate extends BlocDelegate {
-  @override
-  void onTransition(Transition transition) {
-    super.onTransition(transition);
-    print(transition.toString());
   }
 }
 

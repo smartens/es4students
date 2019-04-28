@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:es4students/blocs/course_list/course_list_event.dart';
-import 'package:es4students/blocs/course_list/course_list_state.dart';
+import 'package:es4students/bloc/course_list/course_list_event.dart';
+import 'package:es4students/bloc/course_list/course_list_state.dart';
 
 class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
   //final CourseRepository courseRepository;

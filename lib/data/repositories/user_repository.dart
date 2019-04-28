@@ -1,4 +1,4 @@
-import 'package:es4students/data/models/models.dart';
+import 'package:es4students/data/models/component.dart';
 import 'package:meta/meta.dart';
 import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';

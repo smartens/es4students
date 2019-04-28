@@ -1,7 +1,7 @@
-import 'package:es4students/blocs/authentication/authentication_bloc.dart';
-import 'package:es4students/blocs/login/login_bloc.dart';
-import 'package:es4students/blocs/login/login_event.dart';
-import 'package:es4students/blocs/login/login_state.dart';
+import 'package:es4students/bloc/authentication/authentication_bloc.dart';
+import 'package:es4students/bloc/login/login_bloc.dart';
+import 'package:es4students/bloc/login/login_event.dart';
+import 'package:es4students/bloc/login/login_state.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,9 +1,9 @@
-import 'package:es4students/blocs/authentication/component.dart';
-import 'package:es4students/blocs/login/login_state.dart';
+import 'package:es4students/bloc/authentication/component.dart';
+import 'package:es4students/bloc/login/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:es4students/blocs/login/login_bloc.dart';
+import 'package:es4students/bloc/login/login_bloc.dart';
 import 'package:es4students/data/repositories/user_repository.dart';
 
 import 'login_form.dart';
@@ -61,12 +61,12 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
+    super.initState();
     _authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
     _loginBloc = LoginBloc(
       userRepository: _userRepository,
       authenticationBloc: _authenticationBloc,
     );
-    super.initState();
   }
 
   @override

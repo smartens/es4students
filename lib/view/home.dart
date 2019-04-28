@@ -1,4 +1,4 @@
-import 'package:es4students/blocs/authentication/component.dart';
+import 'package:es4students/bloc/authentication/component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,13 +10,8 @@ class Home extends StatelessWidget {
       body: BlocListener(
         bloc: BlocProvider.of<AuthenticationBloc>(context),
         listener: (BuildContext context, AuthenticationState state) {
-          if (state is FirstStart) {
-            Scaffold.of(context).showSnackBar(
-              SnackBar(
-                backgroundColor: Colors.green,
-                content: Text('Success'),
-              ),
-            );
+          if (state is AuthenticationAuthenticated) {
+            Navigator.of(context).popAndPushNamed(Home());
           }
         },
         child: BlocBuilder(
@@ -27,9 +22,6 @@ class Home extends StatelessWidget {
             }
             if (state is AuthenticationLoading) {
               return Center(child: CircularProgressIndicator());
-            }
-            if (state is AuthenticationAuthenticated) {
-              return Center(child: Text('Success'));
             }
           },
         ),

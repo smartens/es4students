@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:meta/meta.dart';
 
-import 'package:es4students/data/models/models.dart';
+import 'package:es4students/data/models/component.dart';
 
 class MoodleApiClient {
   static const baseUrl = 'https://es4students.de/elearning';

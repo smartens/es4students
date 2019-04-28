@@ -3,7 +3,7 @@ import 'dart:async';
 
 // internal imports
 import 'package:es4students/data/repositories/user_repository.dart';
-import 'package:es4students/blocs/authentication/component.dart';
+import 'package:es4students/bloc/authentication/component.dart';
 
 // Third party imports
 import 'package:meta/meta.dart';

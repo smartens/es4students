@@ -11,7 +11,9 @@ class Home extends StatelessWidget {
         bloc: BlocProvider.of<AuthenticationBloc>(context),
         listener: (BuildContext context, AuthenticationState state) {
           if (state is AuthenticationAuthenticated) {
-            Navigator.of(context).popAndPushNamed(Home());
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => Home())
+            );
           }
         },
         child: BlocBuilder(

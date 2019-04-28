@@ -1,10 +1,18 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:ES4students/repository/user_repository.dart';
+
+import 'package:fluttertoast/fluttertoast.dart';
+
+<<<<<<< HEAD
+=======
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:ES4students/authentication/authentication_event.dart';
 import 'package:ES4students/authentication/authentication_bloc.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ES4students/repository/user_repository.dart';
 
+>>>>>>> e0c88eaf01eb719c2dd3f9374414c3ccfecb924d
 import 'course_tile.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -23,6 +31,8 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   String _fullName = '';
   String _userPictureURL = '';
+
+  DateTime currentBackPressTime = DateTime.now();
 
   void initState() {
     super.initState();
@@ -90,6 +100,7 @@ class _DashboardPageState extends State<DashboardPage> {
     );
 
     return Scaffold(
+<<<<<<< HEAD
       appBar: PreferredSize(
           child: AppBar(
             backgroundColor: Color.fromRGBO(236, 114, 8, 1.0),
@@ -141,19 +152,88 @@ class _DashboardPageState extends State<DashboardPage> {
                               style: TextStyle(color: Colors.white),
                             ),
                           ],
+=======
+      appBar: PreferredSize(child: AppBar(
+        backgroundColor: Color.fromRGBO(236, 114, 8, 1.0),
+        elevation: 0.0,
+      ),
+          preferredSize: Size.fromHeight(0.0)
+      ),
+      body: WillPopScope(
+        onWillPop: () => onWillPop(),
+        child: SafeArea(
+          top: true,
+          child: CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBar(
+                title: const Text('Übersicht'),
+                centerTitle: true,
+                actions: <Widget>[logoutButton],
+                expandedHeight: 256.0,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: Stack(
+                    fit: StackFit.loose,
+                    children: <Widget>[
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            top: 70.0,
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 8.0),
+                                child: CircleAvatar(
+                                  backgroundImage: _userPictureURL.isNotEmpty ?
+                                  NetworkImage(_userPictureURL)
+                                      : AssetImage(
+                                      "images/default_profile_pic.jpeg"),
+                                  backgroundColor: Colors.white,
+                                  maxRadius: 56.0,
+                                ),
+                              ),
+                              Text(
+                                _fullName,
+                                style:
+                                TextStyle(fontSize: 24.0, color: Colors.white),
+                              ),
+                              SizedBox(
+                                height: 8.0,
+                              ),
+                              Text(
+                                'Student', //TODO: Verweis für Status
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ],
+                          ),
+>>>>>>> e0c88eaf01eb719c2dd3f9374414c3ccfecb924d
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate(generateList()),
-            )
-          ],
+              SliverList(
+                delegate: SliverChildListDelegate(generateList()),
+              )
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  Future<bool> onWillPop() {
+    DateTime now = DateTime.now();
+    if (now.difference(currentBackPressTime) > Duration(seconds: 2)) {
+      currentBackPressTime = now;
+      Fluttertoast.showToast(
+        msg: 'Erneut \'Zurück\' drücken, um App zu beenden',
+        toastLength: Toast.LENGTH_LONG,
+      );
+      return Future.value(false);
+    }
+    return Future.value(true);
   }
 }

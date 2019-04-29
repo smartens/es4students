@@ -15,7 +15,7 @@ class UserRepository {
     @required String username,
     @required String password,
   }) async {
-    if (username == null && password == null) {
+    if (username.isEmpty && password.isEmpty) {
       return await moodleApiClient.getToken(
           username: "martens", password: "ERP4students!");
     }

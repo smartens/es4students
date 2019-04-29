@@ -88,9 +88,9 @@ void main() {
   runApp(ES4studentsApp(userRepository: userRepository));
 
   //Backend Testing
-
+/* 
   final CourseRepository courseRepository = CourseRepository(
       moodleApiClient: MoodleApiClient(httpClient: http.Client()));
   print(userRepository.getUserId('124da2c217605ccb2fe6d69782828cad'));
-  print(courseRepository.getCourseList('124da2c217605ccb2fe6d69782828cad'));
+  print(courseRepository.getCourseList('124da2c217605ccb2fe6d69782828cad')); */
 }

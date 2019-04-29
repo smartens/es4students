@@ -26,21 +26,11 @@ class AuthenticationBloc
     if (event is AppStarted) {
       final bool hasToken = await userRepository.hasToken();
 
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-
       if (hasToken) {
         yield AuthenticationAuthenticated();
       } else {
-        if (prefs.getBool('firstStart') ?? true) {
-          yield FirstStart();
-        } else {
-          yield AuthenticationUnauthenticated();
-        }
+        yield AuthenticationUnauthenticated();
       }
-    }
-
-    if (event is OnboardingFinished) {
-      yield AuthenticationUnauthenticated();
     }
 
     if (event is LoggedIn) {

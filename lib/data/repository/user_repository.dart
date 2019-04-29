@@ -8,8 +8,9 @@ class UserRepository {
   final MoodleApiClient moodleApiClient;
   SharedPreferences sharedPreferences;
 
-  UserRepository({@required this.moodleApiClient})
-      : assert(moodleApiClient != null);
+  UserRepository(
+      {@required this.moodleApiClient, @required this.sharedPreferences})
+      : assert(moodleApiClient != null, sharedPreferences != null);
 
   Future<String> getToken({
     @required String username,
@@ -18,9 +19,10 @@ class UserRepository {
     if (username.isEmpty && password.isEmpty) {
       return await moodleApiClient.getToken(
           username: "martens", password: "ERP4students!");
+    } else {
+      return await moodleApiClient.getToken(
+            username: username, password: password);
     }
-    return await moodleApiClient.getToken(
-        username: username, password: password);
   }
 
   Future<void> persistToken(String token) async {

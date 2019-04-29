@@ -21,8 +21,3 @@ class AuthenticationLoading extends AuthenticationState {
   @override
   String toString() => 'AuthenticationLoading';
 }
-
-class FirstStart extends AuthenticationState {
-  @override
-  String toString() => 'AuthenticationFirstStart';
-}

@@ -63,12 +63,6 @@ class AppState extends State<App> {
                           builder: (context) =>
                               DashboardPage(userRepository: _userRepository)));
                 }
-                if (state is FirstStart) {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => OnBoardingPage()));
-                }
               },
               child: SplashPage())),
     );

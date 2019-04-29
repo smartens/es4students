@@ -3,7 +3,6 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:introduction_screen/model/page_view_model.dart';
 
 import 'package:es4students/bloc/authentication/authentication_bloc.dart';
-import 'package:es4students/bloc/authentication/authentication_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 const logo = 'images/erp4students_logo.png';

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -97,6 +98,7 @@ class _DashboardPageState extends State<DashboardPage> {
       },
     );
 
+    timeDilation = 2.0;
     return Scaffold(
       appBar: PreferredSize(
           child: AppBar(
@@ -111,7 +113,13 @@ class _DashboardPageState extends State<DashboardPage> {
           child: CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
-                title: const Text('Übersicht'),
+                title: Hero(
+                  tag: 'logo',
+                  child: Image.asset(
+                    'images/erp4students_logo.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
                 centerTitle: true,
                 actions: <Widget>[logoutButton],
                 expandedHeight: 256.0,

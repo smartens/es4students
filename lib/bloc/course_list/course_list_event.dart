@@ -4,11 +4,17 @@ import 'package:meta/meta.dart';
 @immutable
 abstract class CourseListEvent {}
 
-class CourseListLoaded extends CourseListEvent {
+class LoadCourseList extends CourseListEvent {
+  @override
+  String toString() => 'LoadCourseList';
+}
+/* 
+class LoadedCourseList extends CourseListEvent {
   final List<Course> courseList;
 
-  CourseListLoaded({@required this.courseList});
+  LoadedCourseList({@required this.courseList});
 
   @override
   String toString() => 'CourseListLoaded';
 }
+ */

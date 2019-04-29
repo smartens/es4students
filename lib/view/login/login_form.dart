@@ -110,9 +110,12 @@ class _LoginFormState extends State<LoginForm> {
                   physics: BouncingScrollPhysics(),
                   padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 24.0),
                   children: [
-                    Image.asset(
-                      'images/erp4students_logo.png',
-                      fit: BoxFit.cover,
+                    Hero(
+                      tag: 'logo',
+                      child: Image.asset(
+                        'images/erp4students_logo.png',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     SizedBox(
                       height: 12.0,

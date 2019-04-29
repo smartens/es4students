@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:es4students/bloc/simple_bloc_delegate.dart';
 import 'package:es4students/data/provider/moodle_client.dart';
-import 'package:es4students/data/repository/component.dart';
 import 'package:es4students/data/repository/user_repository.dart';
 import 'package:es4students/view/app.dart';
 import 'package:flutter/material.dart';

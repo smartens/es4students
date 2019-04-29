@@ -42,28 +42,35 @@ class AppState extends State<App> {
     return BlocProvider<AuthenticationBloc>(
       bloc: _authenticationBloc,
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: BlocBuilder<AuthenticationEvent, AuthenticationState>(
-          bloc: _authenticationBloc,
-          builder: (BuildContext context, AuthenticationState state) {
-            if (state is AuthenticationUninitialized) {
-              return SplashPage();
-            }
-            if (state is FirstStart) {
-              return OnBoardingPage();
-            }
-            if (state is AuthenticationUnauthenticated) {
-              return LoginPage(userRepository: _userRepository);
-            }
-            if (state is AuthenticationAuthenticated) {
-              return DashboardPage(userRepository: _userRepository);
-            }
-          },
-        ),
-        theme: ThemeData(
-          primaryColor: Color.fromRGBO(236, 114, 8, 1.0),
-        ),
-      ),
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: Color.fromRGBO(236, 114, 8, 1.0),
+          ),
+          home: BlocListener(
+              bloc: _authenticationBloc,
+              listener: (BuildContext context, AuthenticationState state) {
+                if (state is AuthenticationUnauthenticated) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              LoginPage(userRepository: _userRepository)));
+                }
+                if (state is AuthenticationAuthenticated) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              DashboardPage(userRepository: _userRepository)));
+                }
+                if (state is FirstStart) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => OnBoardingPage()));
+                }
+              },
+              child: SplashPage())),
     );
   }
 }

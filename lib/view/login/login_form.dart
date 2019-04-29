@@ -33,131 +33,125 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginEvent, LoginState>(
-      bloc: _loginBloc,
-      builder: (
-        BuildContext context,
-        LoginState state,
-      ) {
-        if (state is LoginFailure) {
-          _onWidgetDidBuild(() {
-            Scaffold.of(context).showSnackBar(
-              SnackBar(
-                content: Text('${state.error}'),
-                backgroundColor: Colors.red,
+    return BlocListener(
+        bloc: _loginBloc,
+        listener: (BuildContext context, LoginState state) {
+          if (state is LoginFailure) {
+            Scaffold.of(context).showSnackBar(SnackBar(
+              content: Text('${state.error}'),
+              backgroundColor: Colors.red,
+            ));
+          }
+        },
+        child: BlocBuilder<LoginEvent, LoginState>(
+          bloc: _loginBloc,
+          builder: (
+            BuildContext context,
+            LoginState state,
+          ) {
+            final usernameField = TextFormField(
+              keyboardType: TextInputType.text,
+              controller: _usernameController,
+              decoration: InputDecoration(
+                hintText: "Benutzername",
+                border: UnderlineInputBorder(),
               ),
             );
-          });
-        }
 
-        final usernameField = TextFormField(
-          keyboardType: TextInputType.text,
-          controller: _usernameController,
-          decoration: InputDecoration(
-            hintText: "Benutzername",
-            border: UnderlineInputBorder(),
-          ),
-        );
-
-        final passwordField = TextFormField(
-          keyboardType: TextInputType.text,
-          controller: _passwordController,
-          obscureText: _obscureText,
-          decoration: InputDecoration(
-            hintText: "Passwort",
-            errorText: _showValidationError
-                ? "Benutzername oder Passwort falsch"
-                : null,
-            border: UnderlineInputBorder(),
-            suffixIcon: GestureDetector(
-              onTap: () {
-                setState(() {
-                  _obscureText = !_obscureText;
-                });
-              },
-              child: Icon(
-                _obscureText ? Icons.visibility : Icons.visibility_off,
-                semanticLabel: _obscureText ? 'show password' : 'hide password',
+            final passwordField = TextFormField(
+              keyboardType: TextInputType.text,
+              controller: _passwordController,
+              obscureText: _obscureText,
+              decoration: InputDecoration(
+                hintText: "Passwort",
+                errorText: _showValidationError
+                    ? "Benutzername oder Passwort falsch"
+                    : null,
+                border: UnderlineInputBorder(),
+                suffixIcon: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _obscureText = !_obscureText;
+                    });
+                  },
+                  child: Icon(
+                    _obscureText ? Icons.visibility : Icons.visibility_off,
+                    semanticLabel:
+                        _obscureText ? 'show password' : 'hide password',
+                  ),
+                ),
               ),
-            ),
-          ),
-        );
+            );
 
-        final loginButton = RaisedButton(
-          shape: StadiumBorder(),
-          color: Theme.of(context).primaryColor,
-          onPressed: state is! LoginLoading ? _onLoginButtonPressed : null,
-          child: Text(
-            "Anmelden",
-            style: TextStyle(color: Colors.white),
-          ),
-        );
+            final loginButton = RaisedButton(
+              shape: StadiumBorder(),
+              color: Theme.of(context).primaryColor,
+              onPressed: state is! LoginLoading ? _onLoginButtonPressed : null,
+              child: Text(
+                "Anmelden",
+                style: TextStyle(color: Colors.white),
+              ),
+            );
 
-        final passwordResetButton = RaisedButton(
-          shape: StadiumBorder(),
-          color: Color.fromRGBO(245, 245, 248, 1.0),
-          onPressed:
-              state is! LoginLoading ? _onPasswordResetButtonPressed : null,
-          child: Text(
-            "Password vergessen",
-            style: TextStyle(color: Color.fromRGBO(236, 114, 8, 1.0)),
-          ),
-        );
+            final passwordResetButton = RaisedButton(
+              shape: StadiumBorder(),
+              color: Color.fromRGBO(245, 245, 248, 1.0),
+              onPressed:
+                  state is! LoginLoading ? _onPasswordResetButtonPressed : null,
+              child: Text(
+                "Password vergessen",
+                style: TextStyle(color: Color.fromRGBO(236, 114, 8, 1.0)),
+              ),
+            );
 
-        return Form(
-          child: Center(
-            child: ListView(
-              physics: BouncingScrollPhysics(),
-              padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 24.0),
-              children: [
-                Image.asset(
-                  'images/erp4students_logo.png',
-                  fit: BoxFit.cover,
+            return Form(
+              child: Center(
+                child: ListView(
+                  physics: BouncingScrollPhysics(),
+                  padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 24.0),
+                  children: [
+                    Image.asset(
+                      'images/erp4students_logo.png',
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(
+                      height: 12.0,
+                    ),
+                    Text(
+                      "Melden Sie sich mit\nIhrer Benutzerkennung an",
+                      style: TextStyle(fontSize: 16.0),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: 12.0,
+                    ),
+                    usernameField,
+                    SizedBox(
+                      height: 8.0,
+                    ),
+                    passwordField,
+                    SizedBox(
+                      height: 12.0,
+                    ),
+                    loginButton,
+                    SizedBox(
+                      height: 8.0,
+                    ),
+                    passwordResetButton,
+                    SizedBox(
+                      height: 8.0,
+                    ),
+                    Center(
+                      child: state is LoginLoading
+                          ? CircularProgressIndicator()
+                          : null,
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  height: 12.0,
-                ),
-                Text(
-                  "Melden Sie sich mit\nIhrer Benutzerkennung an",
-                  style: TextStyle(fontSize: 16.0),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(
-                  height: 12.0,
-                ),
-                usernameField,
-                SizedBox(
-                  height: 8.0,
-                ),
-                passwordField,
-                SizedBox(
-                  height: 12.0,
-                ),
-                loginButton,
-                SizedBox(
-                  height: 8.0,
-                ),
-                passwordResetButton,
-                SizedBox(
-                  height: 8.0,
-                ),
-                Center(
-                  child: state is LoginLoading
-                      ? CircularProgressIndicator()
-                      : null,
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  void _onWidgetDidBuild(Function callback) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      callback();
-    });
+              ),
+            );
+          },
+        ));
   }
 
   _onLoginButtonPressed() {

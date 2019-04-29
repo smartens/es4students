@@ -1,5 +1,6 @@
 // https://flutter.dev/docs/development/data-and-backend/json#generating-code-continuously
 
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'models.g.dart';
@@ -56,7 +57,7 @@ class User {
 }
 
 @JsonSerializable()
-class Course {
+class Course extends Equatable {
   int id;
   String shortname;
   String fullname;
@@ -91,10 +92,13 @@ class Course {
     this.progress,
     this.startdate,
     this.enddate,
-  });
+  }) : super([id, shortname, fullname, summary, progress]);
 
   factory Course.fromJson(Map<String, dynamic> json) => _$CourseFromJson(json);
   Map<String, dynamic> toJson() => _$CourseToJson(this);
+
+  @override
+  String toString() => 'Course { id: $id, shortname: $shortname, }';
 }
 
 @JsonSerializable()

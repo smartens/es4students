@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:ES4students/view/quiz/question.dart';
+import 'package:es4students/view/quiz/question.dart';
 
 class QuizPage extends StatefulWidget {
   final String name;

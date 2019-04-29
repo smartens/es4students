@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:ES4students/view/course/course_section_tile.dart';
-import 'package:ES4students/view/pdf/pdf_viewer.dart';
+import 'package:es4students/view/course/course_section_tile.dart';
+import 'package:es4students/view/pdf/pdf_viewer.dart';
 
 class CoursePage extends StatelessWidget {
   final String name;
@@ -28,7 +28,6 @@ class CoursePage extends StatelessWidget {
         ),
         body: ListView(
           children: courseSections ?? null,
-        )
-    );
+        ));
   }
 }

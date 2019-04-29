@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
-//import 'package:ES4students/view/course/course_page.dart';
-//import 'package:ES4students/view/course/course_section_tile.dart';
-import 'package:ES4students/view/quiz/quiz_main_page.dart';
+//import 'package:es4students/view/course/course_page.dart';
+//import 'package:es4students/view/course/course_section_tile.dart';
+import 'package:es4students/view/quiz/quiz_main_page.dart';
 
 class CourseTile extends StatelessWidget {
-  CourseTile({Key key, @required this.name, @required this.description,
-    this.courseIcon, this.extraCourse = false})
+  CourseTile(
+      {Key key,
+      @required this.name,
+      @required this.description,
+      this.courseIcon,
+      this.extraCourse = false})
       : super(key: key);
 
   final String name;
@@ -24,9 +28,9 @@ class CourseTile extends StatelessWidget {
         onTap: () {
           Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) =>
-                  QuizMainPage(name: 'Standard-Quiz')
-                /*CoursePage(
+              MaterialPageRoute(
+                  builder: (context) => QuizMainPage(name: 'Standard-Quiz')
+                  /*CoursePage(
                     name: name,
                     courseSections: [
                       CourseSectionTile(
@@ -39,8 +43,7 @@ class CourseTile extends StatelessWidget {
                       )
                     ],
                   )*/
-              )
-          );
+                  ));
         },
         child: Card(
           clipBehavior: Clip.antiAlias,
@@ -70,11 +73,12 @@ class CourseTile extends StatelessWidget {
                     Container(
                       child: extraCourse
                           ? FlatButton(
-                        child: const Text('MEHR INFOS'),
-                        onPressed: () {
-                          _launchURL();
-                        },
-                      ) : null,
+                              child: const Text('MEHR INFOS'),
+                              onPressed: () {
+                                _launchURL();
+                              },
+                            )
+                          : null,
                     )
                   ],
                 ),

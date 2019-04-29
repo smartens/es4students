@@ -1,9 +1,9 @@
-import 'package:ES4students/bloc/authentication/component.dart';
-import 'package:ES4students/data/repository/user_repository.dart';
-import 'package:ES4students/view/dashboard/dashboard_page.dart';
-import 'package:ES4students/view/login/login_page.dart';
-import 'package:ES4students/view/onboarding_page.dart';
-import 'package:ES4students/view/splash_page.dart';
+import 'package:es4students/bloc/authentication/component.dart';
+import 'package:es4students/data/repository/user_repository.dart';
+import 'package:es4students/view/dashboard/dashboard_page.dart';
+import 'package:es4students/view/login/login_page.dart';
+import 'package:es4students/view/onboarding_page.dart';
+import 'package:es4students/view/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

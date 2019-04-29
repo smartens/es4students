@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:ES4students/bloc/authentication/authentication_event.dart';
-import 'package:ES4students/bloc/authentication/authentication_bloc.dart';
-import 'package:ES4students/data/repository/user_repository.dart';
+import 'package:es4students/bloc/authentication/authentication_event.dart';
+import 'package:es4students/bloc/authentication/authentication_bloc.dart';
+import 'package:es4students/data/repository/user_repository.dart';
 
 class ProfilePage extends StatefulWidget {
   final UserRepository userRepository;

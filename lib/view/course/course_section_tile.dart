@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:ES4students/view/course/course_section_page.dart';
+import 'package:es4students/view/course/course_section_page.dart';
 
 class CourseSectionTile extends StatelessWidget {
   final String name;

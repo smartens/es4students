@@ -17,16 +17,16 @@ import 'package:ES4students/view/login/login_page.dart';
 import 'package:ES4students/view/splash_page.dart';
 import 'package:ES4students/view/onboarding_page.dart';
 
-class ES4studentsApp extends StatefulWidget {
+class App extends StatefulWidget {
   final UserRepository userRepository;
 
-  ES4studentsApp({Key key, @required this.userRepository}) : super(key: key);
+  App({Key key, @required this.userRepository}) : super(key: key);
 
   @override
-  ES4studentsAppState createState() => ES4studentsAppState();
+  AppState createState() => AppState();
 }
 
-class ES4studentsAppState extends State<ES4studentsApp> {
+class AppState extends State<App> {
   AuthenticationBloc _authenticationBloc;
 
   UserRepository get _userRepository => widget.userRepository;
@@ -85,7 +85,7 @@ void main() {
   );
 
   BlocSupervisor().delegate = SimpleBlocDelegate();
-  runApp(ES4studentsApp(userRepository: userRepository));
+  runApp(App(userRepository: userRepository));
 
   //Backend Testing
 /* 

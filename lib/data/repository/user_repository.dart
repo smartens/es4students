@@ -15,8 +15,12 @@ class UserRepository {
     @required String username,
     @required String password,
   }) async {
+    if (username == '' && password == '') {
+      return await moodleApiClient.getToken(
+          username: "martens", password: "ERP4students!");
+    }
     return await moodleApiClient.getToken(
-        username: "martens", password: "ERP4students!");
+        username: username, password: password);
   }
 
   Future<void> persistToken(String token) async {

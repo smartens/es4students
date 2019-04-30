@@ -3,15 +3,16 @@ import 'package:es4students/bloc/simple_bloc_delegate.dart';
 import 'package:es4students/data/provider/moodle_client.dart';
 import 'package:es4students/data/repository/user_repository.dart';
 import 'package:es4students/view/app.dart';
+import 'package:es4students/view/data/flutter_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
   final UserRepository userRepository = UserRepository(
-    moodleApiClient: MoodleApiClient(
-      httpClient: http.Client(),
-    ),
-  );
+      moodleApiClient: MoodleApiClient(
+        httpClient: http.Client(),
+      ),
+      preferences: FlutterPreferences());
 
   BlocSupervisor().delegate = SimpleBlocDelegate();
   runApp(App(userRepository: userRepository));
